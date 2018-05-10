@@ -33,6 +33,10 @@ module.exports = {
             'error',
             'always',
         ],
+        'spaced-comment': [
+            'error',
+            'always',
+        ],
         'no-console': [
             'warn',
             {
@@ -42,5 +46,6 @@ module.exports = {
                 ],
             },
         ],
+        'no-trailing-spaces': 'error',
     },
 };
