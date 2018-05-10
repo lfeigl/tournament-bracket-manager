@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/matze-kalle/tournament-bracket-manager/issues"
   },
-  "homepage": "https://github.com/matze-kalle/tournament-bracket-manager#readme"
+  "homepage": "https://github.com/matze-kalle/tournament-bracket-manager#readme",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
 }
