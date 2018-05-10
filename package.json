@@ -1,0 +1,19 @@
+{
+  "name": "tournament-bracket-manager",
+  "version": "0.0.0",
+  "description": "A simple manager for tournament brackets.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/matze-kalle/tournament-bracket-manager.git"
+  },
+  "author": "Matze Kalle",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/matze-kalle/tournament-bracket-manager/issues"
+  },
+  "homepage": "https://github.com/matze-kalle/tournament-bracket-manager#readme"
+}
