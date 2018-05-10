@@ -1,3 +1,5 @@
+/* eslint no-console: 0 */
+
 const express = require('express');
 const server = express();
 const port = 1337;
