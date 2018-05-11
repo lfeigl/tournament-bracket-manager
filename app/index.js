@@ -13,6 +13,8 @@ app.config(($locationProvider, $routeProvider) => {
         controller: 'HomeCtrl',
         controllerAs: 'home',
         template: require('./home/tpl.html'),
+    }).otherwise({
+        template: '<h1>404 - Not Found</h1>',
     });
 });
 
