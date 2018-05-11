@@ -55,5 +55,6 @@ module.exports = {
             },
         ],
         'no-trailing-spaces': 'error',
+        'space-before-function-paren': 'error',
     },
 };
