@@ -27,13 +27,21 @@ module.exports = {
         ],
         'comma-dangle': [
             'error',
+            'always-multiline',
+        ],
+        'array-bracket-spacing': [
+            'error',
             'always',
         ],
-        'eol-last': [
+        'object-curly-spacing': [
             'error',
             'always',
         ],
         'spaced-comment': [
+            'error',
+            'always',
+        ],
+        'eol-last': [
             'error',
             'always',
         ],
@@ -47,5 +55,6 @@ module.exports = {
             },
         ],
         'no-trailing-spaces': 'error',
+        'space-before-function-paren': 'error',
     },
 };

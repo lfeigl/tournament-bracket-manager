@@ -4,7 +4,8 @@
   "description": "A simple manager for tournament brackets.",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "build": "webpack --config=webpack.config.js"
   },
   "repository": {
     "type": "git",
@@ -17,6 +18,13 @@
   },
   "homepage": "https://github.com/matze-kalle/tournament-bracket-manager#readme",
   "dependencies": {
+    "angular": "^1.6.10",
+    "angular-route": "^1.6.10",
     "express": "^4.16.3"
+  },
+  "devDependencies": {
+    "html-loader": "^0.5.5",
+    "webpack": "^4.8.1",
+    "webpack-cli": "^2.1.3"
   }
 }
