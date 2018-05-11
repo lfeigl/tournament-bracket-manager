@@ -29,11 +29,19 @@ module.exports = {
             'error',
             'always-multiline',
         ],
-        'eol-last': [
+        'array-bracket-spacing': [
+            'error',
+            'always',
+        ],
+        'object-curly-spacing': [
             'error',
             'always',
         ],
         'spaced-comment': [
+            'error',
+            'always',
+        ],
+        'eol-last': [
             'error',
             'always',
         ],
