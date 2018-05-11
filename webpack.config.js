@@ -10,4 +10,12 @@ module.exports = {
     },
     devtool: 'source-map',
     watch: true,
+    module: {
+        rules: [
+            {
+                test: /\.html$/,
+                use: [ 'html-loader' ],
+            },
+        ],
+    },
 };
