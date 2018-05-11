@@ -1,5 +1,7 @@
 module.exports = (app) => {
-    app.controller('HomeCtrl', ($scope) => {
-        $scope.label = 'Hello world!';
+    app.controller('HomeCtrl', function () {
+        const vm = this;
+
+        vm.label = 'Hello world!';
     });
 };
