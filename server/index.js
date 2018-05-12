@@ -2,15 +2,12 @@
 
 const express = require('express');
 const path = require('path');
-const parseArgs = require('minimist');
+const config = require('../tbm.config.js');
 const database = require('./database.js');
 
 const server = express();
 const publicDir = path.join(__dirname, 'public');
-const args = parseArgs(process.argv.slice(2));
-const port = args.port || 3000;
-const mongoServer = args.mongoserver || 'localhost';
-const mongoPort = args.mongoport || 27017;
+const port = config.port;
 
 server.use(express.static(publicDir));
 
@@ -20,5 +17,5 @@ server.all('/*', (req, res) => {
 
 server.listen(port, () => {
     console.log(`tbm listening on port ${port}.`);
-    database.connect(mongoServer, mongoPort);
+    database.connect();
 });

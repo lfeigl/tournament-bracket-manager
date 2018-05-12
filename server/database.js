@@ -1,9 +1,13 @@
 /* eslint no-console: 0 */
 
 const mongoClient = require('mongodb').MongoClient;
+const config = require('../tbm.config.js');
+
+const server = config.mongodb.server;
+const port = config.mongodb.port;
 const opts = { useNewUrlParser: true };
 
-function connect (server, port) {
+function connect () {
     mongoClient.connect(`mongodb://${server}:${port}`, opts, (err, client) => {
         if (err) {
             throw err;
