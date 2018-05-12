@@ -4,7 +4,7 @@
   "description": "A simple manager for tournament brackets.",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "node index.js --port=1337 --mongodb=localhost:27017",
     "build": "webpack --config=webpack.config.js"
   },
   "repository": {
