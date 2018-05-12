@@ -1,8 +1,8 @@
 module.exports = {
     port: 1337,
-    mongodb: {
+    mongoDB: {
         server: 'localhost',
         port: 27017,
-        dbname: 'tbm-db',
+        dbName: 'tbm-db',
     },
 };

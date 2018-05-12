@@ -3,8 +3,9 @@
 const mongoClient = require('mongodb').MongoClient;
 const config = require('../tbm.config.js');
 
-const server = config.mongodb.server;
-const port = config.mongodb.port;
+const server = config.mongoDB.server;
+const port = config.mongoDB.port;
+const dbName = config.mongoDB.dbName;
 const opts = { useNewUrlParser: true };
 
 function connect () {
@@ -14,7 +15,7 @@ function connect () {
         }
 
         console.log(`tbm connected to database at ${server} on port ${port}.`);
-        const db = client.db('tbmdb');
+        const db = client.db(dbName);
         const collection = db.collection('test');
 
         collection.find({}).toArray((err, docs) => {
