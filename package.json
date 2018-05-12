@@ -2,9 +2,9 @@
   "name": "tournament-bracket-manager",
   "version": "0.0.0",
   "description": "A simple manager for tournament brackets.",
-  "main": "index.js",
+  "main": "server/index.js",
   "scripts": {
-    "start": "node index.js --port=1337 --mongodb=localhost:27017",
+    "start": "node server/index.js --port=1337 --mongodb=localhost:27017",
     "build": "webpack --config=webpack.config.js"
   },
   "repository": {
