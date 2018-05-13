@@ -6,6 +6,8 @@ module.exports = (app) => {
         });
 
         $routeProvider.when('/', {
+            redirectTo: '/home',
+        }).when('/home', {
             controller: 'HomeCtrl',
             controllerAs: 'home',
             template: require('./home/tpl.html'),
