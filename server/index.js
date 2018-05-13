@@ -18,9 +18,10 @@ server.all('/*', (req, res) => {
     res.sendFile(path.join(publicDir, 'index.html'));
 });
 
-server.listen(port, () => {
-    console.log(`tbm listening on port ${port}.`);
-    mongodb.connect((err) => {
-        if (err) throw err;
+mongodb.connect((err) => {
+    if (err) throw err;
+
+    server.listen(port, () => {
+        console.log(`tbm listening on port ${port}.`);
     });
 });
