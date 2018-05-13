@@ -1,8 +1,8 @@
 const expressRouter = require('express').Router;
 const router = expressRouter();
 
-const test = require('./test.js');
+const participants = require('./participants.js');
 
-router.get('/test', test.getAll);
+router.get('/participants', participants.getAll);
 
 module.exports = router;
