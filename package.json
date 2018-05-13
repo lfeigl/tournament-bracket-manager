@@ -20,11 +20,16 @@
   "dependencies": {
     "angular": "^1.6.10",
     "angular-route": "^1.6.10",
+    "bulma": "^0.7.1",
     "express": "^4.16.3",
     "mongodb": "^3.1.0-beta4"
   },
   "devDependencies": {
+    "css-loader": "^0.28.11",
     "html-loader": "^0.5.5",
+    "node-sass": "^4.9.0",
+    "sass-loader": "^7.0.1",
+    "style-loader": "^0.21.0",
     "webpack": "^4.8.1",
     "webpack-cli": "^2.1.3"
   }

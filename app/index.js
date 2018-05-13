@@ -1,3 +1,5 @@
+require('bulma');
+
 const angular = require('angular');
 const app = angular.module('tbm', [
     require('angular-route'),
@@ -14,7 +16,7 @@ app.config(($locationProvider, $routeProvider) => {
         controllerAs: 'home',
         template: require('./home/tpl.html'),
     }).otherwise({
-        template: '<h1>404 - Not Found</h1>',
+        template: require('./misc/not-found.tpl.html'),
     });
 });
 
