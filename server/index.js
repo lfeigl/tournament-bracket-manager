@@ -4,7 +4,7 @@ const express = require('express');
 const path = require('path');
 const config = require('../tbm.config.js');
 const api = require('./api');
-const database = require('./mongodb.js');
+const mongodb = require('./mongodb.js');
 
 const server = express();
 const publicDir = path.join(__dirname, '..', 'public');
@@ -20,5 +20,7 @@ server.all('/*', (req, res) => {
 
 server.listen(port, () => {
     console.log(`tbm listening on port ${port}.`);
-    database.connect();
+    mongodb.connect((err) => {
+        if (err) throw err;
+    });
 });

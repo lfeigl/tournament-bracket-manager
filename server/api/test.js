@@ -1,5 +1,11 @@
+const db = require('../mongodb.js');
+
 module.exports = {
     getAll: function (req, res) {
-        res.send('Hello world!');
+        const collection = db.get().collection('test');
+
+        collection.find().toArray((err, docs) => {
+            res.send(docs);
+        });
     },
 };
