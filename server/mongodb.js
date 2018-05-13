@@ -17,7 +17,7 @@ module.exports = {
             done(null, mongoConfig);
         });
     },
-    get: function () {
-        return db;
+    get: function (collection) {
+        return db.collection(collection);
     },
 };
