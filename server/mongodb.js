@@ -1,5 +1,3 @@
-/* eslint no-console: 0 */
-
 const MongoClient = require('mongodb').MongoClient;
 const mongoConfig = require('../tbm.config.js').mongoDB;
 
