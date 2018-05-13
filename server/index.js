@@ -4,7 +4,7 @@ const express = require('express');
 const path = require('path');
 const config = require('../tbm.config.js');
 const api = require('./api');
-const database = require('./database.js');
+const database = require('./mongodb.js');
 
 const server = express();
 const publicDir = path.join(__dirname, '..', 'public');
