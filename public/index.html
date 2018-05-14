@@ -12,11 +12,10 @@
 <body data-ng-app="tbm">
     <nav class="navbar is-link is-fixed-top" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
-            <a class="navbar-item">TBM</a>
+            <a class="navbar-item" data-ng-class="{ 'is-active': isActiveTab('home') }" href="/home">TBM</a>
         </div>
         <div class="navbar-menu">
             <div class="navbar-start">
-                <a class="navbar-item" data-ng-class="{ 'is-active': isActiveTab('home') }" href="/home">Home</a>
                 <a class="navbar-item" data-ng-class="{ 'is-active': isActiveTab('tournaments') }" href="/tournaments">Tournaments</a>
                 <a class="navbar-item" data-ng-class="{ 'is-active': isActiveTab('participants') }" href="/participants">Participants</a>
             </div>
