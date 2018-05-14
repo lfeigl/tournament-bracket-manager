@@ -16,9 +16,9 @@
         </div>
         <div class="navbar-menu">
             <div class="navbar-start">
-                <a class="navbar-item">Home</a>
-                <a class="navbar-item">Tournaments</a>
-                <a class="navbar-item">Participants</a>
+                <a class="navbar-item" data-ng-class="{ 'is-active': isActiveTab('home') }">Home</a>
+                <a class="navbar-item" data-ng-class="{ 'is-active': isActiveTab('tournaments') }">Tournaments</a>
+                <a class="navbar-item" data-ng-class="{ 'is-active': isActiveTab('participants') }">Participants</a>
             </div>
             <div class="navbar-end">
                 <a class="navbar-item">About</a>
