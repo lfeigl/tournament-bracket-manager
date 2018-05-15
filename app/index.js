@@ -8,3 +8,4 @@ const app = angular.module('tbm', [
 require('./routing.js')(app);
 require('./runners.js')(app);
 require('./home')(app);
+require('./participants')(app);

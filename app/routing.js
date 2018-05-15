@@ -11,6 +11,10 @@ module.exports = (app) => {
             controller: 'HomeCtrl',
             controllerAs: 'home',
             template: require('./home/tpl.html'),
+        }).when('/participants', {
+            controller: 'ParticipantsCtrl',
+            controllerAs: 'pp',
+            template: require('./participants/tpl.html'),
         }).otherwise({
             template: require('./misc/not-found.tpl.html'),
         });
