@@ -1,3 +1,36 @@
 <section class="section">
-    <h1 class="title">{{pp.label}}</h1>
+    <div class="field">
+        <label class="label">Name</label>
+        <div class="control has-icons-left">
+            <input class="input" type="text" placeholder="Name">
+            <span class="icon is-small is-left">
+                <i class="fas fa-user"></i>
+            </span>
+        </div>
+    </div>
+
+    <div class="field">
+        <div class="control">
+            <label class="checkbox">
+                <input type="checkbox" data-ng-model="alias">
+                Alias
+            </label>
+        </div>
+    </div>
+
+    <div class="field" data-ng-show="alias">
+        <label class="label">Alias</label>
+        <div class="control has-icons-left">
+            <input class="input" type="text" placeholder="Alias">
+            <span class="icon is-small is-left">
+                <i class="fas fa-user-plus"></i>
+            </span>
+        </div>
+    </div>
+
+    <div class="field">
+        <div class="control">
+            <button class="button is-primary">Submit</button>
+        </div>
+    </div>
 </section>
