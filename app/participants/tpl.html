@@ -30,7 +30,7 @@
 
     <div class="field">
         <div class="control">
-            <button class="button is-primary" data-ng-click="pp.addParticipant(input);">Submit</button>
+            <button class="button is-primary" data-ng-click="pp.addParticipant(input);" data-ng-disabled="_.isUndefined(input.name)">Submit</button>
         </div>
     </div>
 </section>
