@@ -2,7 +2,7 @@
     <div class="field">
         <label class="label">Name</label>
         <div class="control has-icons-left">
-            <input class="input" type="text" placeholder="Name">
+            <input class="input" type="text" placeholder="Name" data-ng-model="input.name">
             <span class="icon is-small is-left">
                 <i class="fas fa-user"></i>
             </span>
@@ -12,16 +12,16 @@
     <div class="field">
         <div class="control">
             <label class="checkbox">
-                <input type="checkbox" data-ng-model="alias">
+                <input type="checkbox" data-ng-model="select.alias">
                 Alias
             </label>
         </div>
     </div>
 
-    <div class="field" data-ng-show="alias">
+    <div class="field" data-ng-show="select.alias">
         <label class="label">Alias</label>
         <div class="control has-icons-left">
-            <input class="input" type="text" placeholder="Alias">
+            <input class="input" type="text" placeholder="Alias" data-ng-model="input.alias">
             <span class="icon is-small is-left">
                 <i class="fas fa-user-plus"></i>
             </span>
@@ -30,7 +30,7 @@
 
     <div class="field">
         <div class="control">
-            <button class="button is-primary">Submit</button>
+            <button class="button is-primary" data-ng-click="pp.addParticipant(input);">Submit</button>
         </div>
     </div>
 </section>
