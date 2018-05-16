@@ -10,4 +10,16 @@ module.exports = {
             res.send(participants);
         });
     },
+    add: function (req, res, next) {
+        const collection = db.get('participants');
+        const participant = req.body;
+
+        try {
+            collection.insertOne(participant);
+        } catch (err) {
+            next(err);
+        }
+
+        res.sendStatus(200);
+    },
 };

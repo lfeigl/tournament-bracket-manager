@@ -1,13 +1,18 @@
 /* eslint no-unused-vars: 0 */
 
 const expressRouter = require('express').Router;
-const router = expressRouter();
-
+const bodyParser = require('body-parser');
 const tournaments = require('./tournaments.js');
 const participants = require('./participants.js');
 
+const router = expressRouter();
+
+router.use(bodyParser.json());
+router.use(bodyParser.urlencoded({ extended: true }));
+
 router.get('/tournaments', tournaments.getAll);
 router.get('/participants', participants.getAll);
+router.post('/participants', participants.add);
 
 router.all('/*', (req, res) => {
     res.sendStatus(404);
