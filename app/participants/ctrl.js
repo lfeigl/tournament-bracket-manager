@@ -1,11 +1,7 @@
 module.exports = (app) => {
-    app.controller('ParticipantsCtrl', function () {
+    app.controller('ParticipantsCtrl', function (ParticipantsSrvc) {
         const vm = this;
 
-        vm.addParticipant = addParticipant;
-
-        function addParticipant (input) {
-            console.log(input);
-        }
+        vm.add = ParticipantsSrvc.add;
     });
 };
