@@ -16,7 +16,7 @@ module.exports = (app) => {
             controllerAs: 'tour',
             template: require('./tournaments/tpl.html'),
         }).when('/participants', {
-            controller: 'ParticipantsCtrl',
+            controller: 'ParticipantCtrl',
             controllerAs: 'pp',
             template: require('./participants/tpl.html'),
         }).otherwise({

@@ -1,5 +1,5 @@
 module.exports = (app) => {
-    app.service('ParticipantsSrvc', function ($http) {
+    app.service('ParticipantSrvc', function ($http) {
         const srvc = this;
 
         srvc.getAll = getAll;

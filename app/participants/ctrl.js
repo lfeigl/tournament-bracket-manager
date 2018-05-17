@@ -1,5 +1,5 @@
 module.exports = (app) => {
-    app.controller('ParticipantsCtrl', function (ParticipantsSrvc) {
+    app.controller('ParticipantCtrl', function (ParticipantSrvc) {
         const vm = this;
 
         vm.add = add;
@@ -7,7 +7,7 @@ module.exports = (app) => {
         loadAll();
 
         function loadAll () {
-            ParticipantsSrvc.getAll().then((res) => {
+            ParticipantSrvc.getAll().then((res) => {
                 vm.all = res.data;
             }).catch((err) => {
                 console.error(err);
@@ -15,7 +15,7 @@ module.exports = (app) => {
         }
 
         function add (participant) {
-            ParticipantsSrvc.add(participant).then(() => {
+            ParticipantSrvc.add(participant).then(() => {
                 loadAll();
             }).catch((err) => {
                 console.error(err);
