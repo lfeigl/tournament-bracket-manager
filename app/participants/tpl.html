@@ -1,0 +1,63 @@
+<section class="section">
+    <div class="container">
+        <div class="columns">
+            <div class="column is-8">
+                <div class="box">
+                    <p class="title is-5">All participants</p>
+                    <table class="table is-fullwidth">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Alias</th>
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr data-ng-repeat="participant in pp.all">
+                                <td>{{participant.name}}</td>
+                                <td>{{participant.alias}}</td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+            <div class="column is-4">
+                <div class="box">
+                    <p class="title is-5">Add new participant</p>
+                    <div class="field">
+                        <label class="label">Name</label>
+                        <div class="control has-icons-left">
+                            <input class="input" type="text" placeholder="Name" data-ng-model="input.name">
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-user"></i>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <div class="control">
+                            <label class="checkbox">
+                                <input type="checkbox" data-ng-model="select.alias"> Alias
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="field" data-ng-show="select.alias">
+                        <label class="label">Alias</label>
+                        <div class="control has-icons-left">
+                            <input class="input" type="text" placeholder="Alias" data-ng-model="input.alias">
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-user-plus"></i>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <div class="control">
+                            <button class="button is-primary" data-ng-click="pp.add(input);" data-ng-disabled="_.isEmpty(input.name)">Add</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

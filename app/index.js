@@ -5,19 +5,7 @@ const app = angular.module('tbm', [
     require('angular-route'),
 ]);
 
-app.config(($locationProvider, $routeProvider) => {
-    $locationProvider.html5Mode({
-        enabled: true,
-        requireBase: false,
-    });
-
-    $routeProvider.when('/', {
-        controller: 'HomeCtrl',
-        controllerAs: 'home',
-        template: require('./home/tpl.html'),
-    }).otherwise({
-        template: require('./misc/not-found.tpl.html'),
-    });
-});
-
+require('./routing.js')(app);
+require('./runners.js')(app);
 require('./home')(app);
+require('./participants')(app);
