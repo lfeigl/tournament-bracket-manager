@@ -10,4 +10,16 @@ module.exports = {
             res.send(tournaments);
         });
     },
+    add: function (req, res, next) {
+        const collection = db.get('tournaments');
+        const tournament = req.body;
+
+        try {
+            collection.insertOne(tournament);
+        } catch (err) {
+            next(err);
+        }
+
+        res.sendStatus(200);
+    },
 };
