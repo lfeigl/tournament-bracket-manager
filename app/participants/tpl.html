@@ -26,7 +26,7 @@
                     <div class="field">
                         <label class="label">Name</label>
                         <div class="control has-icons-left">
-                            <input class="input" type="text" placeholder="Name" data-ng-model="input.name">
+                            <input class="input" type="text" placeholder="required" data-ng-model="input.name" data-ng-class="{ 'is-danger': _.isEmpty(input.name), 'is-success': !_.isEmpty(input.name) }">
                             <span class="icon is-small is-left">
                                 <i class="fas fa-user"></i>
                             </span>
@@ -44,7 +44,7 @@
                     <div class="field" data-ng-show="select.alias">
                         <label class="label">Alias</label>
                         <div class="control has-icons-left">
-                            <input class="input" type="text" placeholder="Alias" data-ng-model="input.alias">
+                            <input class="input" type="text" placeholder="optional" data-ng-model="input.alias">
                             <span class="icon is-small is-left">
                                 <i class="fas fa-user-plus"></i>
                             </span>
