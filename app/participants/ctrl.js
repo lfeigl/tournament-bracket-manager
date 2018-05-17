@@ -4,14 +4,20 @@ module.exports = (app) => {
 
         vm.add = add;
 
-        ParticipantsSrvc.getAll().then((res) => {
-            vm.all = res.data;
-        }).catch((err) => {
-            console.error(err);
-        });
+        loadAll();
+
+        function loadAll () {
+            ParticipantsSrvc.getAll().then((res) => {
+                vm.all = res.data;
+            }).catch((err) => {
+                console.error(err);
+            });
+        }
 
         function add (participant) {
-            ParticipantsSrvc.add(participant).catch((err) => {
+            ParticipantsSrvc.add(participant).then(() => {
+                loadAll();
+            }).catch((err) => {
                 console.error(err);
             });
         }
