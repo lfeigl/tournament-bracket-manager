@@ -1,5 +1,5 @@
 module.exports = (app) => {
-    app.controller('TournamentsCtrl', function (TournamentSrvc) {
+    app.controller('TournamentCtrl', function (TournamentSrvc) {
         const vm = this;
 
         vm.add = add;
