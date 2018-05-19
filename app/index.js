@@ -1,4 +1,6 @@
 require('bulma');
+require('../public/js/fontawesome.js');
+require('../public/css/main.css');
 
 const angular = require('angular');
 const app = angular.module('tbm', [
