@@ -4,6 +4,8 @@ module.exports = (app) => {
 
         vm.add = add;
 
+        vm.activeModal = false;
+
         loadAll();
 
         function loadAll () {
@@ -17,6 +19,7 @@ module.exports = (app) => {
         function add (tournament) {
             TournamentSrvc.add(tournament).then(() => {
                 loadAll();
+                vm.activeModal = false;
             }).catch((err) => {
                 console.error(err);
             });
