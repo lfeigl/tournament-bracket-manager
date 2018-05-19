@@ -74,7 +74,7 @@
                     </div>
                 </section>
                 <footer class="modal-card-foot">
-                    <button class="button is-success" data-ng-click="tour.activeModal = false;">Create</button>
+                    <button class="button is-success" data-ng-click="tour.activeModal = false;" data-ng-disabled="_.isEmpty(input.title)">Create</button>
                     <button class="button" data-ng-click="tour.activeModal = false;">Cancel</button>
                 </footer>
             </div>
