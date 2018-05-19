@@ -7,7 +7,7 @@
                     <p class="title">{{tour.all.length}}</p>
                 </div>
             </div>
-            <button class="level-item button is-success">
+            <button class="level-item button is-success" data-ng-click="tour.activeModal = true;">
                 <span class="icon is-small">
                     <i class="fas fa-plus"></i>
                 </span>
@@ -27,5 +27,22 @@
                 </tr>
             </tbody>
         </table>
+
+        <div class="modal" data-ng-class="{ 'is-active': tour.activeModal }">
+            <div class="modal-background"></div>
+            <div class="modal-card">
+                <header class="modal-card-head">
+                    <p class="modal-card-title">Create new tournament</p>
+                    <button class="delete" aria-label="close" data-ng-click="tour.activeModal = false;"></button>
+                </header>
+                <section class="modal-card-body">
+
+                </section>
+                <footer class="modal-card-foot">
+                    <button class="button is-success" data-ng-click="tour.activeModal = false;">Save</button>
+                    <button class="button" data-ng-click="tour.activeModal = false;">Cancel</button>
+                </footer>
+            </div>
+        </div>
     </div>
 </section>
