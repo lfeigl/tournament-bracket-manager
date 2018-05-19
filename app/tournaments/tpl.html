@@ -31,8 +31,8 @@
                 <tr data-ng-repeat="tournament in tour.all">
                     <td>{{tournament.title}}</td>
                     <td>{{tournament.description}}</td>
-                    <td>{{tournament.date | date: "EEEE, dd.MM.yyyy"}}</td>
-                    <td>{{tournament.time | date: "HH:mm"}}</td>
+                    <td>{{tournament.date.from | date: "EEEE, dd.MM.yyyy"}} - {{tournament.date.to | date: "EEEE, dd.MM.yyyy"}}</td>
+                    <td>{{tournament.time.from | date: "HH:mm"}} - {{tournament.time.to | date: "HH:mm"}}</td>
                     <td>{{tournament.location}}</td>
                 </tr>
             </tbody>
