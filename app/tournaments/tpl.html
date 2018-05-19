@@ -1,1 +1,16 @@
-<section class="section">Tournaments</section>
+<section class="section">
+    <div class="container">
+        <table class="table is-fullwidth">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr data-ng-repeat="tournament in tour.all">
+                    <td>{{tournament.name}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
