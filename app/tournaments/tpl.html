@@ -36,10 +36,45 @@
                     <button class="delete" aria-label="close" data-ng-click="tour.activeModal = false;"></button>
                 </header>
                 <section class="modal-card-body">
+                    <div class="field">
+                        <label class="label">Title</label>
+                        <div class="control has-icons-left">
+                            <input class="input" type="text" placeholder="required" data-ng-model="input.title" data-ng-class="{ 'is-danger': _.isEmpty(input.title), 'is-success': !_.isEmpty(input.title) }">
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-edit"></i>
+                            </span>
+                        </div>
+                    </div>
 
+                    <div class="field">
+                        <label class="label">Description</label>
+                        <div class="control">
+                            <textarea class="textarea" placeholder="optional" rows="3" data-ng-model="input.description"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label class="label">Date</label>
+                        <div class="control has-icons-left">
+                            <input class="input" type="date" data-ng-model="input.date">
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-calendar-alt"></i>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label class="label">Location</label>
+                        <div class="control has-icons-left">
+                            <input class="input" type="text" placeholder="optional" data-ng-model="input.location">
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </span>
+                        </div>
+                    </div>
                 </section>
                 <footer class="modal-card-foot">
-                    <button class="button is-success" data-ng-click="tour.activeModal = false;">Save</button>
+                    <button class="button is-success" data-ng-click="tour.activeModal = false;">Create</button>
                     <button class="button" data-ng-click="tour.activeModal = false;">Cancel</button>
                 </footer>
             </div>
