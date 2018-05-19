@@ -18,12 +18,18 @@
         <table class="table is-fullwidth">
             <thead>
                 <tr>
-                    <th>Name</th>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Date</th>
+                    <th>Location</th>
                 </tr>
             </thead>
             <tbody>
                 <tr data-ng-repeat="tournament in tour.all">
                     <td>{{tournament.title}}</td>
+                    <td>{{tournament.description}}</td>
+                    <td>{{tournament.date}}</td>
+                    <td>{{tournament.location}}</td>
                 </tr>
             </tbody>
         </table>
