@@ -1,3 +1,4 @@
+const ObjectId = require('mongodb').ObjectId;
 const db = require('../mongodb.js');
 
 module.exports = {
@@ -21,5 +22,16 @@ module.exports = {
         }
 
         res.sendStatus(200);
+    },
+    update: function (req, res, next) {
+        const collection = db.get('tournaments');
+        const tournament = { _id: ObjectId(req.params.id) };
+        const update = { $set: req.body };
+
+        collection.updateOne(tournament, update, (err, result) => {
+            if (err) next(err);
+
+            res.send(result);
+        });
     },
 };
