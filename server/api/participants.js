@@ -14,12 +14,10 @@ module.exports = {
         const collection = db.get('participants');
         const participant = req.body;
 
-        try {
-            collection.insertOne(participant);
-        } catch (err) {
-            next(err);
-        }
+        collection.insertOne(participant, (err, result) => {
+            if (err) next(err);
 
-        res.sendStatus(200);
+            res.send(result);
+        });
     },
 };

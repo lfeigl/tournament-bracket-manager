@@ -15,13 +15,11 @@ module.exports = {
         const collection = db.get('tournaments');
         const tournament = req.body;
 
-        try {
-            collection.insertOne(tournament);
-        } catch (err) {
-            next(err);
-        }
+        collection.insertOne(tournament, (err, result) => {
+            if (err) next(err);
 
-        res.sendStatus(200);
+            res.send(result);
+        });
     },
     update: function (req, res, next) {
         const collection = db.get('tournaments');
