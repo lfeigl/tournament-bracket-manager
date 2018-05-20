@@ -15,6 +15,10 @@ module.exports = (app) => {
             controller: 'TournamentCtrl',
             controllerAs: 'tour',
             template: require('./tournaments/tpl.html'),
+        }).when('/tournaments/:id', {
+            controller: 'DetailsCtrl',
+            controllerAs: 'details',
+            template: require('./tournaments/details/tpl.html'),
         }).when('/participants', {
             controller: 'ParticipantCtrl',
             controllerAs: 'pp',

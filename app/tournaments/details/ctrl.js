@@ -1,7 +1,7 @@
 module.exports = (app) => {
-    app.controller('DetailsCtrl', function () {
+    app.controller('DetailsCtrl', function ($routeParams) {
         const vm = this;
 
-        vm.label = 'DETAILS';
+        vm.label = $routeParams.id;
     });
 };
