@@ -33,10 +33,10 @@ module.exports = {
     },
     update: function (req, res, next) {
         const collection = db.get('tournaments');
-        const tournament = { _id: new ObjectId(req.params.id) };
+        const tournamentId = { _id: new ObjectId(req.params.id) };
         const update = { $set: req.body };
 
-        collection.updateOne(tournament, update, (err, result) => {
+        collection.updateOne(tournamentId, update, (err, result) => {
             if (err) next(err);
 
             res.send(result);
