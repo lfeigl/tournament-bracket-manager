@@ -1,7 +1,15 @@
 module.exports = (app) => {
-    app.controller('DetailsCtrl', function ($routeParams) {
+    app.controller('DetailsCtrl', function ($routeParams, TournamentSrvc) {
         const vm = this;
 
-        vm.label = $routeParams.id;
+        load($routeParams.id);
+
+        function load (id) {
+            TournamentSrvc.getOne(id).then((res) => {
+                vm.tournament = res.data;
+            }).catch((err) => {
+                console.error(err);
+            });
+        }
     });
 };
