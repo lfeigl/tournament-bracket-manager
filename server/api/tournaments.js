@@ -11,6 +11,16 @@ module.exports = {
             res.send(tournaments);
         });
     },
+    getOne: function (req, res, next) {
+        const collection = db.get('tournaments');
+        const tournamentId = { _id: new ObjectId(req.params.id) };
+
+        collection.findOne(tournamentId, (err, tournament) => {
+            if (err) next(err);
+
+            res.send(tournament);
+        });
+    },
     add: function (req, res, next) {
         const collection = db.get('tournaments');
         const tournament = req.body;

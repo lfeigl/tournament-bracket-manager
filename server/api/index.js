@@ -11,6 +11,7 @@ router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: true }));
 
 router.get('/tournaments', tournaments.getAll);
+router.get('/tournaments/:id', tournaments.getOne);
 router.post('/tournaments', tournaments.add);
 router.post('/tournaments/:id', tournaments.update);
 
