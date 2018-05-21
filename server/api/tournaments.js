@@ -23,7 +23,7 @@ module.exports = {
     },
     update: function (req, res, next) {
         const collection = db.get('tournaments');
-        const tournament = { _id: ObjectId(req.params.id) };
+        const tournament = { _id: new ObjectId(req.params.id) };
         const update = { $set: req.body };
 
         collection.updateOne(tournament, update, (err, result) => {
