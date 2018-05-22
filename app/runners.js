@@ -13,4 +13,12 @@ module.exports = (app) => {
             return regExp.test(path);
         };
     });
+
+    app.run(($rootScope, $location) => {
+        $rootScope.isActiveHash = (tab) => {
+            const hash = $location.hash();
+
+            return tab === hash;
+        };
+    });
 };
