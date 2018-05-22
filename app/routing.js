@@ -1,9 +1,6 @@
 module.exports = (app) => {
     app.config(($locationProvider, $routeProvider) => {
-        $locationProvider.html5Mode({
-            enabled: true,
-            requireBase: false,
-        });
+        $locationProvider.html5Mode(true);
 
         $routeProvider.when('/', {
             redirectTo: '/home',
