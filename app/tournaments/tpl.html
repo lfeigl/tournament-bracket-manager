@@ -1,131 +1,127 @@
-<section class="section">
-    <div class="container">
-        <div class="level">
-            <div class="level-item has-text-centered">
-                <div>
-                    <p class="heading">Tournaments</p>
-                    <p class="title">{{tour.all.length}}</p>
-                </div>
-            </div>
-            <button class="level-item button is-success" data-ng-click="tour.activeModal = true;">
-                <span class="icon is-small">
-                    <i class="fas fa-plus"></i>
-                </span>
-                <span>Create new</span>
-            </button>
-        </div>
-
-        <hr>
-
-        <table class="table is-fullwidth">
-            <thead>
-                <tr>
-                    <th>Title</th>
-                    <th>Description</th>
-                    <th>Date</th>
-                    <th>Time</th>
-                    <th>Location</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr data-ng-repeat="tournament in tour.all">
-                    <td>
-                        <a href="/tournaments/{{tournament._id}}">{{tournament.title}}</a>
-                    </td>
-                    <td>{{tournament.description}}</td>
-                    <td>{{tournament.date.from | date: "EEEE, dd.MM.yyyy"}} - {{tournament.date.to | date: "EEEE, dd.MM.yyyy"}}</td>
-                    <td>{{tournament.time.from | date: "HH:mm"}} - {{tournament.time.to | date: "HH:mm"}}</td>
-                    <td>{{tournament.location}}</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <div class="modal" data-ng-class="{ 'is-active': tour.activeModal }">
-            <div class="modal-background"></div>
-            <div class="modal-card">
-                <header class="modal-card-head">
-                    <p class="modal-card-title">Create new tournament</p>
-                    <button class="delete" aria-label="close" data-ng-click="tour.activeModal = false;"></button>
-                </header>
-                <section class="modal-card-body">
-                    <div class="field">
-                        <label class="label">Title</label>
-                        <div class="control has-icons-left">
-                            <input class="input" type="text" placeholder="required" data-ng-model="input.title" data-ng-class="{ 'is-danger': _.isEmpty(input.title), 'is-success': !_.isEmpty(input.title) }">
-                            <span class="icon is-small is-left">
-                                <i class="fas fa-edit"></i>
-                            </span>
-                        </div>
-                    </div>
-
-                    <div class="field">
-                        <label class="label">Description</label>
-                        <div class="control">
-                            <textarea class="textarea" placeholder="optional" rows="3" data-ng-model="input.description"></textarea>
-                        </div>
-                    </div>
-
-                    <div class="field">
-                        <div class="field-body">
-                            <div class="field">
-                                <label class="label">From</label>
-                                <div class="control has-icons-left">
-                                    <input class="input" type="date" data-ng-model="input.date.from">
-                                    <span class="icon is-small is-left">
-                                        <i class="fas fa-calendar-alt"></i>
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="field">
-                                <label class="label">To</label>
-                                <div class="control has-icons-left">
-                                    <input class="input" type="date" data-ng-model="input.date.to">
-                                    <span class="icon is-small is-left">
-                                        <i class="fas fa-calendar-alt"></i>
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="field">
-                        <div class="field-body">
-                            <div class="field">
-                                <label class="label">From</label>
-                                <div class="control has-icons-left">
-                                    <input class="input" type="time" data-ng-model="input.time.from">
-                                    <span class="icon is-small is-left">
-                                        <i class="fas fa-clock"></i>
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="field">
-                                <label class="label">To</label>
-                                <div class="control has-icons-left">
-                                    <input class="input" type="time" data-ng-model="input.time.to">
-                                    <span class="icon is-small is-left">
-                                        <i class="fas fa-clock"></i>
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="field">
-                        <label class="label">Location</label>
-                        <div class="control has-icons-left">
-                            <input class="input" type="text" placeholder="optional" data-ng-model="input.location">
-                            <span class="icon is-small is-left">
-                                <i class="fas fa-map-marker-alt"></i>
-                            </span>
-                        </div>
-                    </div>
-                </section>
-                <footer class="modal-card-foot">
-                    <button class="button is-success" data-ng-click="tour.add(input);" data-ng-disabled="_.isEmpty(input.title)">Create</button>
-                    <button class="button" data-ng-click="tour.activeModal = false;">Cancel</button>
-                </footer>
-            </div>
+<div class="level">
+    <div class="level-item has-text-centered">
+        <div>
+            <p class="heading">Tournaments</p>
+            <p class="title">{{tour.all.length}}</p>
         </div>
     </div>
-</section>
+    <button class="level-item button is-success" data-ng-click="tour.activeModal = true;">
+        <span class="icon is-small">
+            <i class="fas fa-plus"></i>
+        </span>
+        <span>Create new</span>
+    </button>
+</div>
+
+<hr>
+
+<table class="table is-fullwidth">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Location</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr data-ng-repeat="tournament in tour.all">
+            <td>
+                <a href="/tournaments/{{tournament._id}}">{{tournament.title}}</a>
+            </td>
+            <td>{{tournament.description}}</td>
+            <td>{{tournament.date.from | date: "EEEE, dd.MM.yyyy"}} - {{tournament.date.to | date: "EEEE, dd.MM.yyyy"}}</td>
+            <td>{{tournament.time.from | date: "HH:mm"}} - {{tournament.time.to | date: "HH:mm"}}</td>
+            <td>{{tournament.location}}</td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="modal" data-ng-class="{ 'is-active': tour.activeModal }">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+        <header class="modal-card-head">
+            <p class="modal-card-title">Create new tournament</p>
+            <button class="delete" aria-label="close" data-ng-click="tour.activeModal = false;"></button>
+        </header>
+        <section class="modal-card-body">
+            <div class="field">
+                <label class="label">Title</label>
+                <div class="control has-icons-left">
+                    <input class="input" type="text" placeholder="required" data-ng-model="input.title" data-ng-class="{ 'is-danger': _.isEmpty(input.title), 'is-success': !_.isEmpty(input.title) }">
+                    <span class="icon is-small is-left">
+                        <i class="fas fa-edit"></i>
+                    </span>
+                </div>
+            </div>
+
+            <div class="field">
+                <label class="label">Description</label>
+                <div class="control">
+                    <textarea class="textarea" placeholder="optional" rows="3" data-ng-model="input.description"></textarea>
+                </div>
+            </div>
+
+            <div class="field">
+                <div class="field-body">
+                    <div class="field">
+                        <label class="label">From</label>
+                        <div class="control has-icons-left">
+                            <input class="input" type="date" data-ng-model="input.date.from">
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-calendar-alt"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">To</label>
+                        <div class="control has-icons-left">
+                            <input class="input" type="date" data-ng-model="input.date.to">
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-calendar-alt"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="field">
+                <div class="field-body">
+                    <div class="field">
+                        <label class="label">From</label>
+                        <div class="control has-icons-left">
+                            <input class="input" type="time" data-ng-model="input.time.from">
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-clock"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">To</label>
+                        <div class="control has-icons-left">
+                            <input class="input" type="time" data-ng-model="input.time.to">
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-clock"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="field">
+                <label class="label">Location</label>
+                <div class="control has-icons-left">
+                    <input class="input" type="text" placeholder="optional" data-ng-model="input.location">
+                    <span class="icon is-small is-left">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </span>
+                </div>
+            </div>
+        </section>
+        <footer class="modal-card-foot">
+            <button class="button is-success" data-ng-click="tour.add(input);" data-ng-disabled="_.isEmpty(input.title)">Create</button>
+            <button class="button" data-ng-click="tour.activeModal = false;">Cancel</button>
+        </footer>
+    </div>
+</div>
