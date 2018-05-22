@@ -15,7 +15,37 @@
         </div>
 
         <div data-ng-show="isActiveHash('info')">
-            Info
+            <div class="box">
+                <p class="title is-3">
+                    {{details.tournament.title}}
+                </p>
+            </div>
+
+            <div class="columns">
+                <div class="column is-6">
+                    <div class="box">
+                        <p class="title is-5">Description</p>
+                        <p>{{details.tournament.description}}</p>
+                    </div>
+                </div>
+
+                <div class="column is-6">
+                    <div class="box">
+                        <p class="title is-5">Date, Time, Location</p>
+                        <p>{{details.tournament.date.from | date: "EEEE, dd.MM.yyyy"}} - {{details.tournament.date.to | date:
+                            "EEEE, dd.MM.yyyy"}}
+                        </p>
+
+                        <hr>
+
+                        <p>{{details.tournament.time.from | date: "HH:mm"}} - {{details.tournament.time.to | date: "HH:mm"}}</p>
+
+                        <hr>
+
+                        <p>{{details.tournament.location}}</p>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div data-ng-show="isActiveHash('participants')">
