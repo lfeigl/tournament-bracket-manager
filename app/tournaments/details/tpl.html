@@ -1,5 +1,29 @@
 <section class="section">
     <div class="container">
-        {{details.tournament}}
+        <div class="tabs is-centered">
+            <ul>
+                <li data-ng-class="{ 'is-active': isActiveHash('info') }">
+                    <a href="/tournaments/{{details.id}}#info">Info</a>
+                </li>
+                <li data-ng-class="{ 'is-active': isActiveHash('participants') }">
+                    <a href="/tournaments/{{details.id}}#participants">Participants</a>
+                </li>
+                <li data-ng-class="{ 'is-active': isActiveHash('bracket') }">
+                    <a href="/tournaments/{{details.id}}#bracket">Bracket</a>
+                </li>
+            </ul>
+        </div>
+
+        <div data-ng-show="isActiveHash('info')">
+            Info
+        </div>
+
+        <div data-ng-show="isActiveHash('participants')">
+            Participants
+        </div>
+
+        <div data-ng-show="isActiveHash('bracket')">
+            Bracket
+        </div>
     </div>
 </section>

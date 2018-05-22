@@ -2,7 +2,9 @@ module.exports = (app) => {
     app.controller('DetailsCtrl', function ($routeParams, TournamentSrvc) {
         const vm = this;
 
-        load($routeParams.id);
+        vm.id = $routeParams.id;
+
+        load(vm.id);
 
         function load (id) {
             TournamentSrvc.getOne(id).then((res) => {
