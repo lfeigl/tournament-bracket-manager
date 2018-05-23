@@ -55,7 +55,7 @@
                         <th>Name</th>
                         <th>Alias</th>
                         <th>
-                            <button class="button is-small is-dark">
+                            <button class="button is-small is-rounded is-dark">
                                 <span class="icon is-small">
                                     <i class="fas fa-plus"></i>
                                 </span>
@@ -65,13 +65,38 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr data-ng-repeat="participant in details.tournament.participants">
-                        <td>{{participant.name}}</td>
-                        <td>{{participant.alias}}</td>
+                    <tr data-ng-repeat="tourPart in details.tournament.participants">
+                        <td>{{tourPart.name}}</td>
+                        <td>{{tourPart.alias}}</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="control">
+                                <div class="select">
+                                    <select data-ng-model="select.part" data-ng-options="part.name for part in details.participants"></select>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="control" data-ng-hide="_.isEmpty(select.part.alias)">
+                                <label class="checkbox">
+                                    <input type="checkbox"> Show
+                                    <i>{{select.part.alias}}</i> instead of
+                                    <i>{{select.part.name}}</i>
+                                </label>
+                            </div>
+                            <label data-ng-show="_.isEmpty(select.part.alias)">
+                                <i>No alias defined</i>
+                            </label>
+                        </td>
+                        <td>
+                            <button class="button is-success">Save</button>
+                        </td>
                     </tr>
                 </tbody>
             </table>
-            <button class="button is-success is-fullwidth">
+            <button class="button is-primary is-fullwidth">
                 <span class="icon is-small">
                     <i class="fas fa-plus"></i>
                 </span>
