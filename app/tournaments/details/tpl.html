@@ -55,7 +55,7 @@
                         <th>Name</th>
                         <th>Alias</th>
                         <th>
-                            <button class="button is-small is-rounded is-dark" data-ng-disabled="addingPart">
+                            <button class="button is-small is-rounded is-dark" data-ng-disabled="details.addingPart">
                                 <span class="icon is-small">
                                     <i class="fas fa-plus"></i>
                                 </span>
@@ -70,7 +70,7 @@
                         <td>{{tourPart.alias}}</td>
                         <td></td>
                     </tr>
-                    <tr data-ng-show="addingPart">
+                    <tr data-ng-show="details.addingPart">
                         <td>
                             <div class="control">
                                 <div class="select">
@@ -81,7 +81,7 @@
                         <td>
                             <div class="control" data-ng-hide="_.isEmpty(select.part.alias)">
                                 <label class="checkbox">
-                                    <input type="checkbox"> Show
+                                    <input type="checkbox" data-ng-model="select.useAlias"> Show
                                     <i>{{select.part.alias}}</i> instead of
                                     <i>{{select.part.name}}</i>
                                 </label>
@@ -91,12 +91,12 @@
                             </label>
                         </td>
                         <td>
-                            <button class="button is-success" data-ng-click="addingPart = false;">Save</button>
+                            <button class="button is-success" data-ng-click="details.addParticipant(select);">Save</button>
                         </td>
                     </tr>
                 </tbody>
             </table>
-            <button class="button is-primary is-fullwidth" data-ng-click="addingPart = true;" data-ng-disabled="addingPart">
+            <button class="button is-primary is-fullwidth" data-ng-click="details.addingPart = true;" data-ng-disabled="details.addingPart">
                 <span class="icon is-small">
                     <i class="fas fa-plus"></i>
                 </span>

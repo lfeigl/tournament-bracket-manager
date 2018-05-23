@@ -3,6 +3,7 @@ module.exports = (app) => {
         const vm = this;
 
         vm.id = $routeParams.id;
+        vm.addParticipant = addParticipant;
 
         load(vm.id);
 
@@ -17,6 +18,11 @@ module.exports = (app) => {
             }).catch((err) => {
                 console.error(err);
             });
+        }
+
+        function addParticipant (selection) {
+            vm.addingPart = false;
+            console.log(selection);
         }
     });
 };
