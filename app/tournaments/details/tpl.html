@@ -55,7 +55,7 @@
                         <th>Name</th>
                         <th>Alias</th>
                         <th>
-                            <button class="button is-small is-rounded is-dark">
+                            <button class="button is-small is-rounded is-dark" data-ng-disabled="addingPart">
                                 <span class="icon is-small">
                                     <i class="fas fa-plus"></i>
                                 </span>
@@ -70,7 +70,7 @@
                         <td>{{tourPart.alias}}</td>
                         <td></td>
                     </tr>
-                    <tr>
+                    <tr data-ng-show="addingPart">
                         <td>
                             <div class="control">
                                 <div class="select">
@@ -91,12 +91,12 @@
                             </label>
                         </td>
                         <td>
-                            <button class="button is-success">Save</button>
+                            <button class="button is-success" data-ng-click="addingPart = false;">Save</button>
                         </td>
                     </tr>
                 </tbody>
             </table>
-            <button class="button is-primary is-fullwidth">
+            <button class="button is-primary is-fullwidth" data-ng-click="addingPart = true;" data-ng-disabled="addingPart">
                 <span class="icon is-small">
                     <i class="fas fa-plus"></i>
                 </span>
