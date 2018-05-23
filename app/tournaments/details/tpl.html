@@ -49,7 +49,34 @@
         </div>
 
         <div data-ng-show="isActiveHash('participants')">
-            Participants
+            <table class="table is-fullwidth" data-ng-hide="_.isEmpty(details.tournament.participants)">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Alias</th>
+                        <th>
+                            <button class="button is-small is-dark">
+                                <span class="icon is-small">
+                                    <i class="fas fa-plus"></i>
+                                </span>
+                                <span>Add attribute</span>
+                            </button>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr data-ng-repeat="participant in details.tournament.participants">
+                        <td>{{participant.name}}</td>
+                        <td>{{participant.alias}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <button class="button is-success is-fullwidth">
+                <span class="icon is-small">
+                    <i class="fas fa-plus"></i>
+                </span>
+                <span>Add a participant to this tournament</span>
+            </button>
         </div>
 
         <div data-ng-show="isActiveHash('bracket')">
