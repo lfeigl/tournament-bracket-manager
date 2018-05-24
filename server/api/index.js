@@ -12,7 +12,7 @@ router.use(bodyParser.urlencoded({ extended: true }));
 
 router.get('/tournaments', tournaments.getAll);
 router.get('/tournaments/:id', tournaments.getOne);
-router.post('/tournaments', tournaments.add);
+router.post('/tournaments', tournaments.addTournament);
 router.post('/tournaments/:id', tournaments.update);
 
 router.get('/participants', participants.getAll);

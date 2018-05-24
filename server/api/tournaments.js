@@ -21,7 +21,7 @@ module.exports = {
             res.send(tournament);
         });
     },
-    add: function (req, res, next) {
+    addTournament: function (req, res, next) {
         const collection = db.get('tournaments');
         const tournament = req.body;
 
