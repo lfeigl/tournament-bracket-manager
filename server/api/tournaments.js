@@ -42,4 +42,15 @@ module.exports = {
             res.send(result);
         });
     },
+    addParticipant: function (req, res, next) {
+        const collection = db.get('tournaments');
+        const tournamentId = { _id: new ObjectId(req.params.tournamentId) };
+        const update = { $addToSet: { participants: req.params.participantId } };
+
+        collection.updateOne(tournamentId, update, (err, result) => {
+            if (err) next(err);
+
+            res.send(result);
+        });
+    },
 };
