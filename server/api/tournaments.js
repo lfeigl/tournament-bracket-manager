@@ -13,7 +13,7 @@ module.exports = {
     },
     getOne: function (req, res, next) {
         const collection = db.get('tournaments');
-        const tournamentId = { _id: new ObjectId(req.params.id) };
+        const tournamentId = { _id: new ObjectId(req.params.tournamentId) };
 
         collection.findOne(tournamentId, (err, tournament) => {
             if (err) next(err);
@@ -33,7 +33,7 @@ module.exports = {
     },
     update: function (req, res, next) {
         const collection = db.get('tournaments');
-        const tournamentId = { _id: new ObjectId(req.params.id) };
+        const tournamentId = { _id: new ObjectId(req.params.tournamentId) };
         const update = { $set: req.body };
 
         collection.updateOne(tournamentId, update, (err, result) => {
