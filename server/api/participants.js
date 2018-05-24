@@ -1,3 +1,4 @@
+const ObjectId = require('mongodb').ObjectId;
 const db = require('../mongodb.js');
 
 module.exports = {
@@ -8,6 +9,16 @@ module.exports = {
             if (err) next(err);
 
             res.send(participants);
+        });
+    },
+    getOne: function (req, res, next) {
+        const collection = db.get('participants');
+        const participantId = { _id: new ObjectId(req.params.participantId) };
+
+        collection.findOne(participantId, (err, participant) => {
+            if (err) next(err);
+
+            res.send(participant);
         });
     },
     add: function (req, res, next) {

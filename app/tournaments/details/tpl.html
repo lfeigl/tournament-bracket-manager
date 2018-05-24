@@ -65,7 +65,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr data-ng-repeat="tourPart in details.tournament.participants">
+                    <tr data-ng-repeat="tourPart in details.participants">
                         <td>{{tourPart.name}}</td>
                         <td>{{tourPart.alias}}</td>
                         <td></td>
@@ -74,7 +74,7 @@
                         <td>
                             <div class="control">
                                 <div class="select">
-                                    <select data-ng-model="select.part" data-ng-options="part.name for part in details.participants"></select>
+                                    <select data-ng-model="select.part" data-ng-options="part.name for part in details.allParticipants"></select>
                                 </div>
                             </div>
                         </td>

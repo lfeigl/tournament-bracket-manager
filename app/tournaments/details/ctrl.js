@@ -1,3 +1,5 @@
+const _ = require('lodash');
+
 module.exports = (app) => {
     app.controller('DetailsCtrl', function ($routeParams, TournamentSrvc, ParticipantSrvc) {
         const vm = this;
@@ -8,10 +10,18 @@ module.exports = (app) => {
         load(vm.id);
 
         function load (id) {
+            vm.participants = [];
             TournamentSrvc.getOne(id).then((res) => {
                 vm.tournament = res.data;
                 ParticipantSrvc.getAll().then((res) => {
-                    vm.participants = res.data;
+                    vm.allParticipants = res.data;
+                    _.map(vm.tournament.participants, (participantId) => {
+                        ParticipantSrvc.getOne(participantId).then((res) => {
+                            vm.participants.push(res.data);
+                        }).catch((err) => {
+                            console.error(err);
+                        });
+                    });
                 }).catch((err) => {
                     console.error(err);
                 });
@@ -22,7 +32,11 @@ module.exports = (app) => {
 
         function addParticipant (selection) {
             vm.addingPart = false;
-            console.log(selection);
+            TournamentSrvc.addParticipant(vm.id, selection.part._id).then(() => {
+                load(vm.id);
+            }).catch((err) => {
+                console.error(err);
+            });
         }
     });
 };
