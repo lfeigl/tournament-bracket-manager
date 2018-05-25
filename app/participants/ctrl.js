@@ -1,3 +1,5 @@
+const errorHandler = require('../../misc/error-handler.js');
+
 module.exports = app => {
     app.controller('ParticipantCtrl', function (ParticipantSrvc) {
         const vm = this;
@@ -9,17 +11,13 @@ module.exports = app => {
         function loadAll () {
             ParticipantSrvc.getAll().then(res => {
                 vm.all = res.data;
-            }).catch(err => {
-                console.error(err);
-            });
+            }).catch(errorHandler);
         }
 
         function add (participant) {
             ParticipantSrvc.add(participant).then(() => {
                 loadAll();
-            }).catch(err => {
-                console.error(err);
-            });
+            }).catch(errorHandler);
         }
     });
 };

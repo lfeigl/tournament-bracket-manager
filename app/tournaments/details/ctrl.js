@@ -1,4 +1,5 @@
 const _ = require('lodash');
+const errorHandler = require('../../misc/error-handler.js');
 
 module.exports = app => {
     app.controller('DetailsCtrl', function ($routeParams, TournamentSrvc, ParticipantSrvc) {
@@ -18,25 +19,17 @@ module.exports = app => {
                     if (!_.isEmpty(vm.tournament.participants)) {
                         ParticipantSrvc.getDetails(vm.tournament.participants).then(res => {
                             vm.participants = res.data;
-                        }).catch(err => {
-                            console.error(err);
-                        });
+                        }).catch(errorHandler);
                     }
-                }).catch(err => {
-                    console.error(err);
-                });
-            }).catch(err => {
-                console.error(err);
-            });
+                }).catch(errorHandler);
+            }).catch(errorHandler);
         }
 
         function addParticipant (selection) {
             vm.addingPart = false;
             TournamentSrvc.addParticipant(vm.id, selection.part._id).then(() => {
                 load(vm.id);
-            }).catch(err => {
-                console.error(err);
-            });
+            }).catch(errorHandler);
         }
     });
 };
