@@ -1,4 +1,4 @@
-module.exports = (app) => {
+module.exports = app => {
     app.controller('ParticipantCtrl', function (ParticipantSrvc) {
         const vm = this;
 
@@ -7,9 +7,9 @@ module.exports = (app) => {
         loadAll();
 
         function loadAll () {
-            ParticipantSrvc.getAll().then((res) => {
+            ParticipantSrvc.getAll().then(res => {
                 vm.all = res.data;
-            }).catch((err) => {
+            }).catch(err => {
                 console.error(err);
             });
         }
@@ -17,7 +17,7 @@ module.exports = (app) => {
         function add (participant) {
             ParticipantSrvc.add(participant).then(() => {
                 loadAll();
-            }).catch((err) => {
+            }).catch(err => {
                 console.error(err);
             });
         }

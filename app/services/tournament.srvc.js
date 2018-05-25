@@ -1,4 +1,4 @@
-module.exports = (app) => {
+module.exports = app => {
     app.service('TournamentSrvc', function ($http) {
         const srvc = this;
 

@@ -1,4 +1,4 @@
-module.exports = (app) => {
+module.exports = app => {
     app.controller('TournamentCtrl', function (TournamentSrvc) {
         const vm = this;
 
@@ -9,9 +9,9 @@ module.exports = (app) => {
         loadAll();
 
         function loadAll () {
-            TournamentSrvc.getAll().then((res) => {
+            TournamentSrvc.getAll().then(res => {
                 vm.all = res.data;
-            }).catch((err) => {
+            }).catch(err => {
                 console.error(err);
             });
         }
@@ -20,7 +20,7 @@ module.exports = (app) => {
             TournamentSrvc.add(tournament).then(() => {
                 loadAll();
                 vm.activeModal = false;
-            }).catch((err) => {
+            }).catch(err => {
                 console.error(err);
             });
         }
