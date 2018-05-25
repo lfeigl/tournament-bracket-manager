@@ -1,5 +1,9 @@
 <section class="section">
     <div class="container">
+        <p class="title is-3">
+            {{details.tournament.title}}
+        </p>
+
         <div class="tabs is-centered">
             <ul>
                 <li data-ng-class="{ 'is-active': isActiveHash('info') }">
@@ -15,12 +19,6 @@
         </div>
 
         <div data-ng-show="isActiveHash('info')">
-            <div class="box">
-                <p class="title is-3">
-                    {{details.tournament.title}}
-                </p>
-            </div>
-
             <div class="columns">
                 <div class="column is-6">
                     <div class="box">
