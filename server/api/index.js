@@ -17,8 +17,8 @@ router.post('/tournaments/:tournamentId', tournaments.update);
 router.post('/tournaments/:tournamentId/:participantId', tournaments.addParticipant);
 
 router.get('/participants', participants.getAll);
-router.get('/participants/:participantId', participants.getOne);
 router.post('/participants', participants.add);
+router.post('/participants/details', participants.getDetails);
 
 router.all('/*', (req, res) => {
     res.sendStatus(404);

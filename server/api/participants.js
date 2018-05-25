@@ -12,16 +12,6 @@ module.exports = {
             res.send(participants);
         });
     },
-    getOne: function (req, res, next) {
-        const collection = db.get('participants');
-        const participantId = { _id: new ObjectId(req.params.participantId) };
-
-        collection.findOne(participantId, (err, participant) => {
-            if (err) return next(err);
-
-            res.send(participant);
-        });
-    },
     add: function (req, res, next) {
         const collection = db.get('participants');
         const participant = req.body;
@@ -30,6 +20,20 @@ module.exports = {
             if (err) return next(err);
 
             res.send(result);
+        });
+    },
+    getDetails: function (req, res, next) {
+        const collection = db.get('participants');
+        const participantIds = req.body;
+        const objectIds = participantIds.map(participantId => {
+            return new ObjectId(participantId);
+        });
+        const selector = { _id: { $in: objectIds } };
+
+        collection.find(selector).toArray((err, participant) => {
+            if (err) return next(err);
+
+            res.send(participant);
         });
     },
 };
