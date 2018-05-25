@@ -4,8 +4,9 @@ const db = require('../mongodb.js');
 module.exports = {
     getAll: function (req, res, next) {
         const collection = db.get('participants');
+        const projection = { name: 1, alias: 1 };
 
-        collection.find().toArray((err, participants) => {
+        collection.find().project(projection).toArray((err, participants) => {
             if (err) return next(err);
 
             res.send(participants);
