@@ -1,5 +1,3 @@
-const _ = require('lodash');
-
 module.exports = (app) => {
     app.controller('DetailsCtrl', function ($routeParams, TournamentSrvc, ParticipantSrvc) {
         const vm = this;
@@ -15,13 +13,12 @@ module.exports = (app) => {
                 vm.tournament = res.data;
                 ParticipantSrvc.getAll().then((res) => {
                     vm.allParticipants = res.data;
-                    _.map(vm.tournament.participants, (participantId) => {
-                        ParticipantSrvc.getOne(participantId).then((res) => {
-                            vm.participants.push(res.data);
-                        }).catch((err) => {
-                            console.error(err);
-                        });
+                    ParticipantSrvc.getDetails(vm.tournament.participants).then((res) => {
+                        vm.participants = res.data;
+                    }).catch((err) => {
+                        console.error(err);
                     });
+
                 }).catch((err) => {
                     console.error(err);
                 });
