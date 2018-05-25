@@ -22,7 +22,6 @@ module.exports = app => {
                             console.error(err);
                         });
                     }
-
                 }).catch(err => {
                     console.error(err);
                 });
