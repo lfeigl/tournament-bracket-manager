@@ -6,7 +6,7 @@ module.exports = {
         const collection = db.get('tournaments');
 
         collection.find().toArray((err, tournaments) => {
-            if (err) next(err);
+            if (err) return next(err);
 
             res.send(tournaments);
         });
@@ -16,7 +16,7 @@ module.exports = {
         const tournamentId = { _id: new ObjectId(req.params.tournamentId) };
 
         collection.findOne(tournamentId, (err, tournament) => {
-            if (err) next(err);
+            if (err) return next(err);
 
             res.send(tournament);
         });
@@ -26,7 +26,7 @@ module.exports = {
         const tournament = req.body;
 
         collection.insertOne(tournament, (err, result) => {
-            if (err) next(err);
+            if (err) return next(err);
 
             res.send(result);
         });
@@ -37,7 +37,7 @@ module.exports = {
         const update = { $set: req.body };
 
         collection.updateOne(tournamentId, update, (err, result) => {
-            if (err) next(err);
+            if (err) return next(err);
 
             res.send(result);
         });
@@ -48,7 +48,7 @@ module.exports = {
         const update = { $addToSet: { participants: req.params.participantId } };
 
         collection.updateOne(tournamentId, update, (err, result) => {
-            if (err) next(err);
+            if (err) return next(err);
 
             res.send(result);
         });

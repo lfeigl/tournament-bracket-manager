@@ -6,7 +6,7 @@ module.exports = {
         const collection = db.get('participants');
 
         collection.find().toArray((err, participants) => {
-            if (err) next(err);
+            if (err) return next(err);
 
             res.send(participants);
         });
@@ -16,7 +16,7 @@ module.exports = {
         const participantId = { _id: new ObjectId(req.params.participantId) };
 
         collection.findOne(participantId, (err, participant) => {
-            if (err) next(err);
+            if (err) return next(err);
 
             res.send(participant);
         });
@@ -26,7 +26,7 @@ module.exports = {
         const participant = req.body;
 
         collection.insertOne(participant, (err, result) => {
-            if (err) next(err);
+            if (err) return next(err);
 
             res.send(result);
         });
