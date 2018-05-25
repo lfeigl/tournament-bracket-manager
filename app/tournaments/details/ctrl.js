@@ -1,3 +1,5 @@
+const _ = require('lodash');
+
 module.exports = app => {
     app.controller('DetailsCtrl', function ($routeParams, TournamentSrvc, ParticipantSrvc) {
         const vm = this;
@@ -13,11 +15,13 @@ module.exports = app => {
                 vm.tournament = res.data;
                 ParticipantSrvc.getAll().then(res => {
                     vm.allParticipants = res.data;
-                    ParticipantSrvc.getDetails(vm.tournament.participants).then(res => {
-                        vm.participants = res.data;
-                    }).catch(err => {
-                        console.error(err);
-                    });
+                    if (!_.isEmpty(vm.tournament.participants)) {
+                        ParticipantSrvc.getDetails(vm.tournament.participants).then(res => {
+                            vm.participants = res.data;
+                        }).catch(err => {
+                            console.error(err);
+                        });
+                    }
 
                 }).catch(err => {
                     console.error(err);
