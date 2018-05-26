@@ -5,7 +5,8 @@
   "main": "server/index.js",
   "scripts": {
     "start": "node server/index.js",
-    "build": "webpack --config=webpack.config.js"
+    "build-server": "supervisor --watch server server/index.js",
+    "build-client": "webpack --config=webpack.config.js"
   },
   "repository": {
     "type": "git",
