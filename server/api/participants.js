@@ -36,4 +36,15 @@ module.exports = {
             res.send(participant);
         });
     },
+    delete: function (req, res, next) {
+        const collection = db.get('participants');
+        const participantId = new ObjectId(req.params.participantId);
+        const participant = { _id: participantId };
+
+        collection.deleteOne(participant, (err, result) => {
+            if (err) return next(err);
+
+            res.send(result);
+        });
+    },
 };
