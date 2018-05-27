@@ -16,15 +16,11 @@ module.exports = app => {
         }
 
         function add (participant) {
-            ParticipantSrvc.add(participant).then(() => {
-                loadAll();
-            }).catch(errorHandler);
+            ParticipantSrvc.add(participant).then(loadAll).catch(errorHandler);
         }
 
         function remove (id) {
-            ParticipantSrvc.remove(id).then(() => {
-                loadAll();
-            }).catch(errorHandler);
+            ParticipantSrvc.remove(id).then(loadAll).catch(errorHandler);
         }
     });
 };
