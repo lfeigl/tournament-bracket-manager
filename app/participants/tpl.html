@@ -9,12 +9,20 @@
                             <tr>
                                 <th>Name</th>
                                 <th>Alias</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr data-ng-repeat="participant in pp.all">
                                 <td>{{participant.name}}</td>
                                 <td>{{participant.alias}}</td>
+                                <td>
+                                    <button class="button" data-ng-click="pp.remove(participant._id);">
+                                        <span class="icon has-text-danger">
+                                            <i class="fas fa-trash"></i>
+                                        </span>
+                                    </button>
+                                </td>
                             </tr>
                         </tbody>
                     </table>

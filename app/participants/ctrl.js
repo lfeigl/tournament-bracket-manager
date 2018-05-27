@@ -5,6 +5,7 @@ module.exports = app => {
         const vm = this;
 
         vm.add = add;
+        vm.remove = remove;
 
         loadAll();
 
@@ -16,6 +17,12 @@ module.exports = app => {
 
         function add (participant) {
             ParticipantSrvc.add(participant).then(() => {
+                loadAll();
+            }).catch(errorHandler);
+        }
+
+        function remove (id) {
+            ParticipantSrvc.remove(id).then(() => {
                 loadAll();
             }).catch(errorHandler);
         }
