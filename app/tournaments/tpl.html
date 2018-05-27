@@ -28,7 +28,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr data-ng-repeat="tournament in tour.all">
+                <tr data-ng-repeat="tournament in tour.all | orderBy: 'title'">
                     <td>
                         <a href="/tournaments/{{tournament._id}}#info">{{tournament.title}}</a>
                     </td>

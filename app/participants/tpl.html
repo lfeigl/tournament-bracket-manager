@@ -13,7 +13,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr data-ng-repeat="participant in pp.all">
+                            <tr data-ng-repeat="participant in pp.all | orderBy: 'name'">
                                 <td>{{participant.name}}</td>
                                 <td>{{participant.alias}}</td>
                                 <td>
