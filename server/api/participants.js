@@ -1,3 +1,4 @@
+const _ = require('lodash');
 const ObjectId = require('mongodb').ObjectId;
 const db = require('../mongodb.js');
 
@@ -20,6 +21,28 @@ module.exports = {
             if (err) return next(err);
 
             res.send(result);
+        });
+    },
+    addSetting: function (req, res, next) {
+        const collection = db.get('participants');
+        const participantId = new ObjectId(req.body.participantId);
+        const tournamentId = new ObjectId(req.body.tournamentId);
+        const setting = req.body.setting;
+        const settingName = req.body.settingName;
+        const selector = { _id: participantId };
+
+        collection.findOne(selector, (err, participant) => {
+            if (err) return next(err);
+
+            const oldSettings = participant.settings;
+            const newSettings = _.set(oldSettings, [ tournamentId, settingName ], setting);
+            const update = { $set: { settings: newSettings } };
+
+            collection.updateOne(selector, update, (err, result) => {
+                if (err) return next(err);
+
+                res.send(result);
+            });
         });
     },
     getDetails: function (req, res, next) {

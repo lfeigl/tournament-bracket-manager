@@ -18,6 +18,7 @@ router.post('/tournaments/:tournamentId/:participantId', tournaments.addParticip
 
 router.get('/participants', participants.getAll);
 router.post('/participants', participants.add);
+router.post('/participants/setting', participants.addSetting);
 router.post('/participants/details', participants.getDetails);
 router.delete('/participants/:participantId', participants.delete);
 
