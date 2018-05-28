@@ -4,6 +4,7 @@ module.exports = app => {
 
         srvc.getAll = getAll;
         srvc.add = add;
+        srvc.addSetting = addSetting;
         srvc.getDetails = getDetails;
         srvc.remove = remove;
 
@@ -13,6 +14,10 @@ module.exports = app => {
 
         function add (participant) {
             return $http.post('/api/participants', participant);
+        }
+
+        function addSetting (setting) {
+            return $http.post('/api/participants/setting', setting);
         }
 
         function getDetails (ids) {
