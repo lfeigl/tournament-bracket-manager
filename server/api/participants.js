@@ -34,7 +34,7 @@ module.exports = {
         collection.findOne(selector, (err, participant) => {
             if (err) return next(err);
 
-            const oldSettings = participant.settings;
+            const oldSettings = participant.settings || {};
             const newSettings = _.set(oldSettings, [ tournamentId, settingName ], setting);
             const update = { $set: { settings: newSettings } };
 
