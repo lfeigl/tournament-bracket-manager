@@ -15,6 +15,7 @@ router.get('/tournaments/:tournamentId', tournaments.getOne);
 router.post('/tournaments', tournaments.addTournament);
 router.post('/tournaments/:tournamentId', tournaments.update);
 router.post('/tournaments/:tournamentId/:participantId', tournaments.addParticipant);
+router.delete('/tournaments/:tournamentId', tournaments.delete);
 
 router.get('/participants', participants.getAll);
 router.post('/participants', participants.add);

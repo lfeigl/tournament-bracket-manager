@@ -53,4 +53,15 @@ module.exports = {
             res.send(result);
         });
     },
+    delete: function (req, res, next) {
+        const collection = db.get('tournaments');
+        const tournamentId = new ObjectId(req.params.tournamentId);
+        const tournament = { _id: tournamentId };
+
+        collection.deleteOne(tournament, (err, result) => {
+            if (err) return next(err);
+
+            res.send(result);
+        });
+    },
 };
