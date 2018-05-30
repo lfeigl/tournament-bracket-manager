@@ -13,9 +13,10 @@ module.exports = {
     },
     getOne: function (req, res, next) {
         const collection = db.get('tournaments');
-        const tournamentId = { _id: new ObjectId(req.params.tournamentId) };
+        const tournamentId = new ObjectId(req.params.tournamentId);
+        const selector = { _id: tournamentId };
 
-        collection.findOne(tournamentId, (err, tournament) => {
+        collection.findOne(selector, (err, tournament) => {
             if (err) return next(err);
 
             res.send(tournament);
@@ -33,10 +34,11 @@ module.exports = {
     },
     update: function (req, res, next) {
         const collection = db.get('tournaments');
-        const tournamentId = { _id: new ObjectId(req.params.tournamentId) };
+        const tournamentId = new ObjectId(req.params.tournamentId);
+        const selector = { _id: tournamentId };
         const update = { $set: req.body };
 
-        collection.updateOne(tournamentId, update, (err, result) => {
+        collection.updateOne(selector, update, (err, result) => {
             if (err) return next(err);
 
             res.send(result);
@@ -44,21 +46,23 @@ module.exports = {
     },
     addParticipant: function (req, res, next) {
         const collection = db.get('tournaments');
-        const tournamentId = { _id: new ObjectId(req.params.tournamentId) };
-        const update = { $addToSet: { participants: req.params.participantId } };
+        const tournamentId = new ObjectId(req.params.tournamentId);
+        const participantId = req.params.participantId;
+        const selector = { _id: tournamentId };
+        const update = { $addToSet: { participants: participantId } };
 
-        collection.updateOne(tournamentId, update, (err, result) => {
+        collection.updateOne(selector, update, (err, result) => {
             if (err) return next(err);
 
             res.send(result);
         });
     },
-    delete: function (req, res, next) {
+    deleteTournament: function (req, res, next) {
         const collection = db.get('tournaments');
         const tournamentId = new ObjectId(req.params.tournamentId);
-        const tournament = { _id: tournamentId };
+        const selector = { _id: tournamentId };
 
-        collection.deleteOne(tournament, (err, result) => {
+        collection.deleteOne(selector, (err, result) => {
             if (err) return next(err);
 
             res.send(result);
