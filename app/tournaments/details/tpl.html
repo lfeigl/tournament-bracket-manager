@@ -72,7 +72,7 @@
                         <td>
                             <div class="control">
                                 <div class="select">
-                                    <select data-ng-model="select.part" data-ng-options="part.name for part in details.allParticipants"></select>
+                                    <select data-ng-model="select.part" data-ng-options="part.name for part in details.allParticipants | isAlreadyUsed: details.participants "></select>
                                 </div>
                             </div>
                         </td>
