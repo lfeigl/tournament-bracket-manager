@@ -19,7 +19,7 @@ router.delete('/tournaments/:tournamentId', tournaments.deleteTournament);
 router.delete('/tournaments/:tournamentId/:participantId', tournaments.deleteParticipant);
 
 router.get('/participants', participants.getAll);
-router.post('/participants', participants.add);
+router.post('/participants', participants.addParticipant);
 router.post('/participants/setting', participants.addSetting);
 router.post('/participants/details', participants.getDetails);
 router.delete('/participants/:participantId', participants.delete);
