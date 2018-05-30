@@ -64,4 +64,17 @@ module.exports = {
             res.send(result);
         });
     },
+    deleteParticipant: function (req, res, next) {
+        const collection = db.get('tournaments');
+        const tournamentId = new ObjectId(req.params.tournamentId);
+        const participantId = req.params.participantId;
+        const selector = { _id: tournamentId };
+        const update = { $pull: { participants: participantId } };
+
+        collection.updateOne(selector, update, (err, result) => {
+            if (err) return next(err);
+
+            res.send(result);
+        });
+    },
 };
