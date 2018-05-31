@@ -2,6 +2,11 @@
     <div class="container">
         <p class="title is-3">
             {{details.tournament.title}}
+            <button class="button is-pulled-right" data-ng-click="details.delTourMdl = true;">
+                <span class="icon has-text-danger">
+                    <i class="fas fa-trash"></i>
+                </span>
+            </button>
         </p>
 
         <div class="tabs is-centered">
@@ -104,6 +109,27 @@
 
         <div data-ng-show="isActiveHash('bracket')">
             Bracket
+        </div>
+
+        <div class="modal" data-ng-class="{ 'is-active': details.delTourMdl }">
+            <div class="modal-background"></div>
+            <div class="modal-content">
+                <div class="box">
+                    <span class="icon has-text-danger is-pulled-right">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </span>
+                    <div class="content">
+                        <p>
+                            Do you really want to <strong>delete</strong> this tournament?
+                        </p>
+                        <p>
+                            This <strong>cannot</strong> be undone.
+                        </p>
+                    </div>
+                    <button class="button is-danger" data-ng-click="details.deleteTournament();">Delete this tournament</button>
+                    <button class="button" data-ng-click="details.delTourMdl = false;">Cancel</button>
+                </div>
+            </div>
         </div>
     </div>
 </section>

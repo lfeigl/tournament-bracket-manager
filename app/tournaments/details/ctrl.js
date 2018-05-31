@@ -2,11 +2,12 @@ const _ = require('lodash');
 const errorHandler = require('../../misc/error-handler.js');
 
 module.exports = app => {
-    app.controller('DetailsCtrl', function ($routeParams, TournamentSrvc, ParticipantSrvc) {
+    app.controller('DetailsCtrl', function ($document, $routeParams, TournamentSrvc, ParticipantSrvc) {
         const vm = this;
 
         vm.id = $routeParams.id;
         vm.addParticipant = addParticipant;
+        vm.deleteTournament = deleteTournament;
 
         load(vm.id);
 
@@ -42,6 +43,13 @@ module.exports = app => {
             };
 
             ParticipantSrvc.addSetting(setting).catch(errorHandler);
+        }
+
+        function deleteTournament () {
+            TournamentSrvc.deleteTournament(vm.id).then(() => {
+                vm.delTourModal = false;
+                _.first($document).location = '/tournaments';
+            }).catch(errorHandler);
         }
     });
 };
