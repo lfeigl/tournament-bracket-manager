@@ -6,6 +6,8 @@ module.exports = app => {
         srvc.getOne = getOne;
         srvc.add = add;
         srvc.addParticipant = addParticipant;
+        srvc.deleteTournament = deleteTournament;
+        srvc.deleteParticipant = deleteParticipant;
 
         function getAll () {
             return $http.get('/api/tournaments');
@@ -21,6 +23,14 @@ module.exports = app => {
 
         function addParticipant (tournamentId, participantId) {
             return $http.post(`/api/tournaments/${tournamentId}/${participantId}`);
+        }
+
+        function deleteTournament (tournamentId) {
+            return $http.delete(`/api/tournaments/${tournamentId}`);
+        }
+
+        function deleteParticipant (tournamentId, participantId) {
+            return $http.delete(`/api/tournaments/${tournamentId}/${participantId}`);
         }
     });
 };
