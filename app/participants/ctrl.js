@@ -17,7 +17,7 @@ module.exports = app => {
         }
 
         function add (participant) {
-            ParticipantSrvc.add(participant).then(loadAll).catch(errorHandler);
+            ParticipantSrvc.addParticipant(participant).then(loadAll).catch(errorHandler);
         }
 
         function confirm (id) {

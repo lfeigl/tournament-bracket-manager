@@ -3,7 +3,7 @@ module.exports = app => {
         const srvc = this;
 
         srvc.getAll = getAll;
-        srvc.add = add;
+        srvc.addParticipant = addParticipant;
         srvc.addSetting = addSetting;
         srvc.getDetails = getDetails;
         srvc.remove = remove;
@@ -12,7 +12,7 @@ module.exports = app => {
             return $http.get('/api/participants');
         }
 
-        function add (participant) {
+        function addParticipant (participant) {
             return $http.post('/api/participants', participant);
         }
 
@@ -20,12 +20,12 @@ module.exports = app => {
             return $http.post('/api/participants/setting', setting);
         }
 
-        function getDetails (ids) {
-            return $http.post('/api/participants/details', ids);
+        function getDetails (participantIds) {
+            return $http.post('/api/participants/details', participantIds);
         }
 
-        function remove (id) {
-            return $http.delete(`/api/participants/${id}`);
+        function remove (participantId) {
+            return $http.delete(`/api/participants/${participantId}`);
         }
     });
 };
