@@ -8,6 +8,8 @@ module.exports = app => {
 
         vm.addParticipant = addParticipant;
         vm.deleteTournament = deleteTournament;
+        vm.deleteParticipant = deleteParticipant;
+        vm.confirm = confirm;
 
         load();
 
@@ -50,6 +52,18 @@ module.exports = app => {
                 vm.delTourModal = false;
                 _.first($document).location = '/tournaments';
             }).catch(errorHandler);
+        }
+
+        function deleteParticipant () {
+            TournamentSrvc.deleteParticipant(vm.id, vm.participantId).then(() => {
+                load();
+                vm.delPartMdl = false;
+            }).catch(errorHandler);
+        }
+
+        function confirm (participantId) {
+            vm.participantId = participantId;
+            vm.delPartMdl = true;
         }
     });
 };
