@@ -28,24 +28,46 @@
                 <div class="column is-6">
                     <div class="box">
                         <p class="title is-5">Description</p>
-                        <p>{{details.tournament.description}}</p>
+                        <p data-ng-hide="_.isEmpty(details.tournament.description)">
+                            {{details.tournament.description}}
+                        </p>
+                        <p data-ng-show="_.isEmpty(details.tournament.description)">
+                            <em>No description given.</em>
+                        </p>
                     </div>
                 </div>
 
                 <div class="column is-6">
                     <div class="box">
                         <p class="title is-5">Date, Time, Location</p>
-                        <p>{{details.tournament.date.from | date: "EEEE, dd.MM.yyyy"}} - {{details.tournament.date.to | date:
-                            "EEEE, dd.MM.yyyy"}}
+                        <p data-ng-hide="_.isEmpty(details.tournament.date.from) && _.isEmpty(details.tournament.date.to)">
+                            <span data-ng-hide="_.isEmpty(details.tournament.date.from)">{{details.tournament.date.from | date: "EEEE, dd.MM.yyyy"}}</span>
+                            <span data-ng-hide="_.isEmpty(details.tournament.date.from) || _.isEmpty(details.tournament.date.to)">-</span>
+                            <span data-ng-hide="_.isEmpty(details.tournament.date.to)">{{details.tournament.date.to | date: "EEEE, dd.MM.yyyy"}}</span>
+                        </p>
+                        <p data-ng-show="_.isEmpty(details.tournament.date.from) && _.isEmpty(details.tournament.date.to)">
+                            <em>No date given.</em>
                         </p>
 
                         <hr>
 
-                        <p>{{details.tournament.time.from | date: "HH:mm"}} - {{details.tournament.time.to | date: "HH:mm"}}</p>
+                        <p data-ng-hide="_.isEmpty(details.tournament.time.from) && _.isEmpty(details.tournament.time.to)">
+                            <span data-ng-hide="_.isEmpty(details.tournament.time.from)">{{details.tournament.time.from | date: "HH:mm"}}</span>
+                            <span data-ng-hide="_.isEmpty(details.tournament.time.from) || _.isEmpty(details.tournament.time.to)">-</span>
+                            <span data-ng-hide="_.isEmpty(details.tournament.time.to)">{{details.tournament.time.to | date: "HH:mm"}}</span>
+                        </p>
+                        <p data-ng-show="_.isEmpty(details.tournament.time.from) && _.isEmpty(details.tournament.time.to)">
+                            <em>No time given.</em>
+                        </p>
 
                         <hr>
 
-                        <p>{{details.tournament.location}}</p>
+                        <p data-ng-hide="_.isEmpty(details.tournament.location)">
+                            {{details.tournament.location}}
+                        </p>
+                        <p data-ng-show="_.isEmpty(details.tournament.location)">
+                            <em>No location given.</em>
+                        </p>
                     </div>
                 </div>
             </div>
