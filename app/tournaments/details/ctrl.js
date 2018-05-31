@@ -4,16 +4,16 @@ const errorHandler = require('../../misc/error-handler.js');
 module.exports = app => {
     app.controller('DetailsCtrl', function ($document, $routeParams, TournamentSrvc, ParticipantSrvc) {
         const vm = this;
-
         vm.id = $routeParams.id;
+
         vm.addParticipant = addParticipant;
         vm.deleteTournament = deleteTournament;
 
-        load(vm.id);
+        load();
 
-        function load (id) {
+        function load () {
             vm.participants = [];
-            TournamentSrvc.getOne(id).then(res => {
+            TournamentSrvc.getOne(vm.id).then(res => {
                 vm.tournament = res.data;
                 ParticipantSrvc.getAll().then(res => {
                     vm.allParticipants = res.data;
@@ -29,7 +29,7 @@ module.exports = app => {
         function addParticipant (selection) {
             vm.addingPart = false;
             TournamentSrvc.addParticipant(vm.id, selection.part._id).then(() => {
-                load(vm.id);
+                load();
                 addSetting(selection);
             }).catch(errorHandler);
         }
