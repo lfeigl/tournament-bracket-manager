@@ -4,7 +4,7 @@ module.exports = app => {
 
         srvc.getAll = getAll;
         srvc.getOne = getOne;
-        srvc.add = add;
+        srvc.addTournament = addTournament;
         srvc.addParticipant = addParticipant;
         srvc.deleteTournament = deleteTournament;
         srvc.deleteParticipant = deleteParticipant;
@@ -13,11 +13,11 @@ module.exports = app => {
             return $http.get('/api/tournaments');
         }
 
-        function getOne (id) {
-            return $http.get(`/api/tournaments/${id}`);
+        function getOne (tournamentId) {
+            return $http.get(`/api/tournaments/${tournamentId}`);
         }
 
-        function add (tournament) {
+        function addTournament (tournament) {
             return $http.post('/api/tournaments', tournament);
         }
 
