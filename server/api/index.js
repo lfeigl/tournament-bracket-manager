@@ -4,7 +4,6 @@ const expressRouter = require('express').Router;
 const bodyParser = require('body-parser');
 const tournaments = require('./tournaments.js');
 const participants = require('./participants.js');
-
 const router = expressRouter();
 
 router.use(bodyParser.json());
@@ -23,10 +22,6 @@ router.post('/participants', participants.addParticipant);
 router.post('/participants/setting', participants.addSetting);
 router.post('/participants/details', participants.getDetails);
 router.delete('/participants/:participantId', participants.delete);
-
-router.all('/*', (req, res) => {
-    res.sendStatus(404);
-});
 
 router.use((err, req, res, next) => {
     console.error(err);
