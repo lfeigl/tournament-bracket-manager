@@ -7,9 +7,14 @@ A simple manager for tournament brackets.
 * `npm install`
 
 ## Development
-### Requirements
-* [Node Supervisor](https://www.npmjs.com/package/supervisor)
+### Build the client
+`npm run build-client`
+> (re)builds the client at changes on the client side
 
-### Building
-* `npm run build-server` (re)starts the server at changes on the server side
-* `npm run build-client` builds the client at changes on the client side
+### Start the server
+`npm start`
+> starts the server
+
+#### Optional
+`npm run build-server` **(requires [Node Supervisor](https://www.npmjs.com/package/supervisor))**
+> (re)starts the server at changes on the server side

@@ -2,17 +2,20 @@ const _ = require('lodash');
 const errorHandler = require('../../misc/error-handler.js');
 
 module.exports = app => {
-    app.controller('DetailsCtrl', function ($routeParams, TournamentSrvc, ParticipantSrvc) {
+    app.controller('DetailsCtrl', function ($document, $routeParams, TournamentSrvc, ParticipantSrvc) {
         const vm = this;
-
         vm.id = $routeParams.id;
+
         vm.addParticipant = addParticipant;
+        vm.deleteTournament = deleteTournament;
+        vm.deleteParticipant = deleteParticipant;
+        vm.confirm = confirm;
 
-        load(vm.id);
+        load();
 
-        function load (id) {
+        function load () {
             vm.participants = [];
-            TournamentSrvc.getOne(id).then(res => {
+            TournamentSrvc.getOne(vm.id).then(res => {
                 vm.tournament = res.data;
                 ParticipantSrvc.getAll().then(res => {
                     vm.allParticipants = res.data;
@@ -28,8 +31,39 @@ module.exports = app => {
         function addParticipant (selection) {
             vm.addingPart = false;
             TournamentSrvc.addParticipant(vm.id, selection.part._id).then(() => {
-                load(vm.id);
+                load();
+                addSetting(selection);
             }).catch(errorHandler);
+        }
+
+        function addSetting (selection) {
+            const setting = {
+                participantId: selection.part._id,
+                tournamentId: vm.id,
+                settingName: 'useAlias',
+                setting: selection.useAlias || false,
+            };
+
+            ParticipantSrvc.addSetting(setting).catch(errorHandler);
+        }
+
+        function deleteTournament () {
+            TournamentSrvc.deleteTournament(vm.id).then(() => {
+                vm.delTourModal = false;
+                _.first($document).location = '/tournaments';
+            }).catch(errorHandler);
+        }
+
+        function deleteParticipant () {
+            TournamentSrvc.deleteParticipant(vm.id, vm.participantId).then(() => {
+                load();
+                vm.delPartMdl = false;
+            }).catch(errorHandler);
+        }
+
+        function confirm (participantId) {
+            vm.participantId = participantId;
+            vm.delPartMdl = true;
         }
     });
 };

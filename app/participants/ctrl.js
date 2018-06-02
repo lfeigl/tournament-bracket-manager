@@ -5,6 +5,8 @@ module.exports = app => {
         const vm = this;
 
         vm.add = add;
+        vm.confirm = confirm;
+        vm.remove = remove;
 
         loadAll();
 
@@ -15,9 +17,17 @@ module.exports = app => {
         }
 
         function add (participant) {
-            ParticipantSrvc.add(participant).then(() => {
-                loadAll();
-            }).catch(errorHandler);
+            ParticipantSrvc.addParticipant(participant).then(loadAll).catch(errorHandler);
+        }
+
+        function confirm (id) {
+            vm.id = id;
+            vm.activeModal = true;
+        }
+
+        function remove () {
+            ParticipantSrvc.remove(vm.id).then(loadAll).catch(errorHandler);
+            vm.activeModal = false;
         }
     });
 };

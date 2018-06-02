@@ -9,12 +9,20 @@
                             <tr>
                                 <th>Name</th>
                                 <th>Alias</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr data-ng-repeat="participant in pp.all">
+                            <tr data-ng-repeat="participant in pp.all | orderBy: 'name'">
                                 <td>{{participant.name}}</td>
                                 <td>{{participant.alias}}</td>
+                                <td>
+                                    <button class="button is-pulled-right" data-ng-click="pp.confirm(participant._id);">
+                                        <span class="icon has-text-danger">
+                                            <i class="fas fa-trash"></i>
+                                        </span>
+                                    </button>
+                                </td>
                             </tr>
                         </tbody>
                     </table>
@@ -61,6 +69,30 @@
                             </button>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal" data-ng-class="{ 'is-active': pp.activeModal }">
+            <div class="modal-background"></div>
+            <div class="modal-content">
+                <div class="box">
+                    <span class="icon has-text-danger is-pulled-right">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </span>
+                    <div class="content">
+                        <p>
+                            Do you really want to <strong>delete</strong> this participant?
+                        </p>
+                        <p>
+                            It will be removed from all tournaments.
+                        </p>
+                        <p>
+                            This <strong>cannot</strong> be undone.
+                        </p>
+                    </div>
+                    <button class="button is-danger" data-ng-click="pp.remove();">Delete this participant</button>
+                    <button class="button" data-ng-click="pp.activeModal = false;">Cancel</button>
                 </div>
             </div>
         </div>

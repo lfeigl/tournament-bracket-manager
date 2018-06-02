@@ -2,6 +2,11 @@
     <div class="container">
         <p class="title is-3">
             {{details.tournament.title}}
+            <button class="button is-pulled-right" data-ng-click="details.delTourMdl = true;">
+                <span class="icon has-text-danger">
+                    <i class="fas fa-trash"></i>
+                </span>
+            </button>
         </p>
 
         <div class="tabs is-centered">
@@ -23,24 +28,46 @@
                 <div class="column is-6">
                     <div class="box">
                         <p class="title is-5">Description</p>
-                        <p>{{details.tournament.description}}</p>
+                        <p data-ng-hide="_.isEmpty(details.tournament.description)">
+                            {{details.tournament.description}}
+                        </p>
+                        <p data-ng-show="_.isEmpty(details.tournament.description)">
+                            <em>No description given.</em>
+                        </p>
                     </div>
                 </div>
 
                 <div class="column is-6">
                     <div class="box">
                         <p class="title is-5">Date, Time, Location</p>
-                        <p>{{details.tournament.date.from | date: "EEEE, dd.MM.yyyy"}} - {{details.tournament.date.to | date:
-                            "EEEE, dd.MM.yyyy"}}
+                        <p data-ng-hide="_.isEmpty(details.tournament.date.from) && _.isEmpty(details.tournament.date.to)">
+                            <span data-ng-hide="_.isEmpty(details.tournament.date.from)">{{details.tournament.date.from | date: "EEEE, dd.MM.yyyy"}}</span>
+                            <span data-ng-hide="_.isEmpty(details.tournament.date.from) || _.isEmpty(details.tournament.date.to)">-</span>
+                            <span data-ng-hide="_.isEmpty(details.tournament.date.to)">{{details.tournament.date.to | date: "EEEE, dd.MM.yyyy"}}</span>
+                        </p>
+                        <p data-ng-show="_.isEmpty(details.tournament.date.from) && _.isEmpty(details.tournament.date.to)">
+                            <em>No date given.</em>
                         </p>
 
                         <hr>
 
-                        <p>{{details.tournament.time.from | date: "HH:mm"}} - {{details.tournament.time.to | date: "HH:mm"}}</p>
+                        <p data-ng-hide="_.isEmpty(details.tournament.time.from) && _.isEmpty(details.tournament.time.to)">
+                            <span data-ng-hide="_.isEmpty(details.tournament.time.from)">{{details.tournament.time.from | date: "HH:mm"}}</span>
+                            <span data-ng-hide="_.isEmpty(details.tournament.time.from) || _.isEmpty(details.tournament.time.to)">-</span>
+                            <span data-ng-hide="_.isEmpty(details.tournament.time.to)">{{details.tournament.time.to | date: "HH:mm"}}</span>
+                        </p>
+                        <p data-ng-show="_.isEmpty(details.tournament.time.from) && _.isEmpty(details.tournament.time.to)">
+                            <em>No time given.</em>
+                        </p>
 
                         <hr>
 
-                        <p>{{details.tournament.location}}</p>
+                        <p data-ng-hide="_.isEmpty(details.tournament.location)">
+                            {{details.tournament.location}}
+                        </p>
+                        <p data-ng-show="_.isEmpty(details.tournament.location)">
+                            <em>No location given.</em>
+                        </p>
                     </div>
                 </div>
             </div>
@@ -63,16 +90,22 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr data-ng-repeat="tourPart in details.participants">
+                    <tr data-ng-repeat="tourPart in details.participants | orderBy: 'name'">
                         <td>{{tourPart.name}}</td>
                         <td>{{tourPart.alias}}</td>
-                        <td></td>
+                        <td>
+                            <button class="button is-pulled-right" data-ng-click="details.confirm(tourPart._id);">
+                                <span class="icon has-text-danger">
+                                    <i class="fas fa-trash"></i>
+                                </span>
+                            </button>
+                        </td>
                     </tr>
                     <tr data-ng-show="details.addingPart">
                         <td>
                             <div class="control">
                                 <div class="select">
-                                    <select data-ng-model="select.part" data-ng-options="part.name for part in details.allParticipants"></select>
+                                    <select data-ng-model="select.part" data-ng-options="part.name for part in details.allParticipants | isAlreadyUsed: details.participants "></select>
                                 </div>
                             </div>
                         </td>
@@ -85,7 +118,7 @@
                                 </label>
                             </div>
                             <label data-ng-show="_.isEmpty(select.part.alias)">
-                                <i>No alias defined</i>
+                                <em>No alias given.</em>
                             </label>
                         </td>
                         <td>
@@ -104,6 +137,51 @@
 
         <div data-ng-show="isActiveHash('bracket')">
             Bracket
+        </div>
+
+        <div class="modal" data-ng-class="{ 'is-active': details.delTourMdl }">
+            <div class="modal-background"></div>
+            <div class="modal-content">
+                <div class="box">
+                    <span class="icon has-text-danger is-pulled-right">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </span>
+                    <div class="content">
+                        <p>
+                            Do you really want to <strong>delete</strong> this tournament?
+                        </p>
+                        <p>
+                            This <strong>cannot</strong> be undone.
+                        </p>
+                    </div>
+                    <button class="button is-danger" data-ng-click="details.deleteTournament();">Delete this tournament</button>
+                    <button class="button" data-ng-click="details.delTourMdl = false;">Cancel</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal" data-ng-class="{ 'is-active': details.delPartMdl }">
+            <div class="modal-background"></div>
+            <div class="modal-content">
+                <div class="box">
+                    <span class="icon has-text-danger is-pulled-right">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </span>
+                    <div class="content">
+                        <p>
+                            Do you really want to <strong>delete</strong> this participant from this tournament?
+                        </p>
+                        <p>
+                            The participant <strong>will not</strong> be deleted.
+                        </p>
+                        <p>
+                            This <strong>cannot</strong> be undone.
+                        </p>
+                    </div>
+                    <button class="button is-danger" data-ng-click="details.deleteParticipant();">Delete this participant from this tournament</button>
+                    <button class="button" data-ng-click="details.delPartMdl = false;">Cancel</button>
+                </div>
+            </div>
         </div>
     </div>
 </section>

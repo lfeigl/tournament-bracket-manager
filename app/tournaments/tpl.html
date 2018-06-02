@@ -7,7 +7,7 @@
                     <p class="title">{{tour.all.length}}</p>
                 </div>
             </div>
-            <button class="level-item button is-success" data-ng-click="tour.activeModal = true;">
+            <button class="level-item button is-success" data-ng-click="tour.addTourMdl = true;">
                 <span class="icon is-small">
                     <i class="fas fa-plus"></i>
                 </span>
@@ -28,7 +28,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr data-ng-repeat="tournament in tour.all">
+                <tr data-ng-repeat="tournament in tour.all | orderBy: 'title'">
                     <td>
                         <a href="/tournaments/{{tournament._id}}#info">{{tournament.title}}</a>
                     </td>
@@ -40,12 +40,12 @@
             </tbody>
         </table>
 
-        <div class="modal" data-ng-class="{ 'is-active': tour.activeModal }">
+        <div class="modal" data-ng-class="{ 'is-active': tour.addTourMdl }">
             <div class="modal-background"></div>
             <div class="modal-card">
                 <header class="modal-card-head">
                     <p class="modal-card-title">Create new tournament</p>
-                    <button class="delete" aria-label="close" data-ng-click="tour.activeModal = false;"></button>
+                    <button class="delete" aria-label="close" data-ng-click="tour.addTourMdl = false;"></button>
                 </header>
                 <section class="modal-card-body">
                     <div class="field">
@@ -123,7 +123,7 @@
                 </section>
                 <footer class="modal-card-foot">
                     <button class="button is-success" data-ng-click="tour.add(input);" data-ng-disabled="_.isEmpty(input.title)">Create</button>
-                    <button class="button" data-ng-click="tour.activeModal = false;">Cancel</button>
+                    <button class="button" data-ng-click="tour.addTourMdl = false;">Cancel</button>
                 </footer>
             </div>
         </div>
