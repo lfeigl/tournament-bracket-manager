@@ -19,7 +19,11 @@ module.exports = {
         collection.findOne(selector, (err, tournament) => {
             if (err) return next(err);
 
-            res.send(tournament);
+            if (tournament) {
+                res.send(tournament);
+            } else {
+                res.sendStatus(404);
+            }
         });
     },
     addTournament: function (req, res, next) {
