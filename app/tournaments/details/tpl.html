@@ -27,6 +27,16 @@
             <div class="columns">
                 <div class="column is-6">
                     <div class="box">
+                        <p class="title is-5">Organizer</p>
+                        <p data-ng-hide="_.isEmpty(details.tournament.organizer)">
+                            {{details.tournament.organizer}}
+                        </p>
+                        <p data-ng-show="_.isEmpty(details.tournament.organizer)">
+                            <em>No organizer given.</em>
+                        </p>
+                    </div>
+
+                    <div class="box">
                         <p class="title is-5">Description</p>
                         <p data-ng-hide="_.isEmpty(details.tournament.description)">
                             {{details.tournament.description}}
