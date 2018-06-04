@@ -1,12 +1,19 @@
 <section class="section">
     <div class="container">
-        <p class="title is-3">
+        <p class="title is-3 is-inline">
             {{details.tournament.title}}
-            <button class="button is-pulled-right" data-ng-click="details.delTourMdl = true;">
-                <span class="icon has-text-danger">
-                    <i class="fas fa-trash"></i>
-                </span>
-            </button>
+            <div class="is-pulled-right">
+                <button class="button" title="Edit this tournament" data-ng-click="details.editTourMdl = true;">
+                    <span class="icon">
+                        <i class="fas fa-pencil-alt"></i>
+                    </span>
+                </button>
+                <button class="button" title="Delete this tournament" data-ng-click="details.delTourMdl = true;">
+                    <span class="icon has-text-danger">
+                        <i class="fas fa-trash"></i>
+                    </span>
+                </button>
+            </div>
         </p>
 
         <div class="tabs is-centered">
