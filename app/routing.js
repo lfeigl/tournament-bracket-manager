@@ -7,19 +7,19 @@ module.exports = app => {
         }).when('/home', {
             controller: 'HomeCtrl',
             controllerAs: 'home',
-            template: require('./home/tpl.html'),
+            template: require('./pages/home/tpl.html'),
         }).when('/tournaments', {
             controller: 'TournamentCtrl',
             controllerAs: 'tour',
-            template: require('./tournaments/tpl.html'),
+            template: require('./pages/tournaments/tpl.html'),
         }).when('/tournaments/:id', {
             controller: 'DetailsCtrl',
             controllerAs: 'details',
-            template: require('./tournaments/details/tpl.html'),
+            template: require('./pages/tournaments/details/tpl.html'),
         }).when('/participants', {
             controller: 'ParticipantCtrl',
             controllerAs: 'pp',
-            template: require('./participants/tpl.html'),
+            template: require('./pages/participants/tpl.html'),
         }).otherwise({
             template: require('./misc/not-found.tpl.html'),
         });
