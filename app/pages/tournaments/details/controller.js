@@ -5,6 +5,7 @@ module.exports = app => {
     app.controller('DetailsCtrl', function ($document, $routeParams, TournamentSrvc, ParticipantSrvc) {
         const vm = this;
         vm.id = $routeParams.id;
+        vm.isLoading = false;
         vm.tourMdlVisible = false;
         vm.tourMdlOpts = {
             ctrl: 'details',
@@ -22,10 +23,14 @@ module.exports = app => {
 
         function load () {
             vm.participants = [];
+            vm.isLoading = true;
+
             TournamentSrvc.getOne(vm.id).then(res => {
                 vm.tournament = res.data;
+
                 ParticipantSrvc.getAll().then(res => {
                     vm.allParticipants = res.data;
+
                     if (!_.isEmpty(vm.tournament.participants)) {
                         ParticipantSrvc.getDetails(vm.tournament.participants).then(res => {
                             vm.participants = res.data.map((participant) => {
@@ -34,12 +39,16 @@ module.exports = app => {
                             });
                         }).catch(errorHandler);
                     }
+
+                    vm.isLoading = false;
                 }).catch(errorHandler);
             }).catch(errorHandler);
         }
 
         function addParticipant (selection) {
+            vm.isLoading = true;
             vm.addingPart = false;
+
             TournamentSrvc.addParticipant(vm.id, selection.part._id).then(() => {
                 load();
                 addSetting(selection);

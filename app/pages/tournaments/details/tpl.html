@@ -153,6 +153,11 @@
                     </tr>
                 </tbody>
             </table>
+            <div class="level" data-ng-show="details.isLoading">
+                <span class="icon is-large level-item">
+                    <i class="fas fa-2x fa-spinner fa-pulse"></i>
+                </span>
+            </div>
             <button class="button is-primary is-fullwidth" data-ng-click="details.addingPart = true;" data-ng-disabled="details.addingPart">
                 <span class="icon is-small">
                     <i class="fas fa-plus"></i>
