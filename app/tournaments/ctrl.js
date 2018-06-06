@@ -4,6 +4,11 @@ module.exports = app => {
     app.controller('TournamentCtrl', function (TournamentSrvc) {
         const vm = this;
         vm.visibleMdl = false;
+        vm.mdlOpts = {
+            ctrl: 'tour',
+            title: 'Create new tournament',
+            submit: 'Create',
+        };
 
         vm.submit = addTournament;
 

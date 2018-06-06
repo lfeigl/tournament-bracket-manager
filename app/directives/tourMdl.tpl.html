@@ -2,7 +2,7 @@
     <div class="modal-background"></div>
     <div class="modal-card">
         <header class="modal-card-head">
-            <p class="modal-card-title">Create new tournament</p>
+            <p class="modal-card-title">{{opts.title}}</p>
             <button class="delete" aria-label="close" data-ng-click="ctrl.visibleMdl = false;"></button>
         </header>
         <section class="modal-card-body">
@@ -90,7 +90,7 @@
             </div>
         </section>
         <footer class="modal-card-foot">
-            <button class="button is-success" data-ng-click="ctrl.submit(input);" data-ng-disabled="_.isEmpty(input.title)">Create</button>
+            <button class="button is-success" data-ng-click="ctrl.submit(input);" data-ng-disabled="_.isEmpty(input.title)">{{opts.submit}}</button>
             <button class="button" data-ng-click="ctrl.visibleMdl = false;">Cancel</button>
         </footer>
     </div>
