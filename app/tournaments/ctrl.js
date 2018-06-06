@@ -3,9 +3,9 @@ const errorHandler = require('../misc/error-handler.js');
 module.exports = app => {
     app.controller('TournamentCtrl', function (TournamentSrvc) {
         const vm = this;
-        vm.addTourMdl = false;
+        vm.visibleMdl = false;
 
-        vm.add = add;
+        vm.submit = addTournament;
 
         loadAll();
 
@@ -15,10 +15,10 @@ module.exports = app => {
             }).catch(errorHandler);
         }
 
-        function add (tournament) {
+        function addTournament (tournament) {
             TournamentSrvc.addTournament(tournament).then(() => {
                 loadAll();
-                vm.addTourMdl = false;
+                vm.visibleMdl = false;
             }).catch(errorHandler);
         }
     });
