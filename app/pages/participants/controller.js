@@ -1,4 +1,4 @@
-const errorHandler = require('../misc/error-handler.js');
+const errorHandler = require('../../misc/error-handler.js');
 
 module.exports = app => {
     app.controller('ParticipantCtrl', function (ParticipantSrvc) {

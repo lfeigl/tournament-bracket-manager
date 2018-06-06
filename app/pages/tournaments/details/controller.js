@@ -1,5 +1,5 @@
 const _ = require('lodash');
-const errorHandler = require('../../misc/error-handler.js');
+const errorHandler = require('../../../misc/error-handler.js');
 
 module.exports = app => {
     app.controller('DetailsCtrl', function ($document, $routeParams, TournamentSrvc, ParticipantSrvc) {
