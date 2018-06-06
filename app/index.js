@@ -9,8 +9,11 @@ const app = angular.module('tbm', [
 
 require('./routing.js')(app);
 require('./runners.js')(app);
+
 require('./services')(app);
+require('./directives')(app);
 require('./misc')(app);
+
 require('./home')(app);
 require('./tournaments')(app);
 require('./participants')(app);
