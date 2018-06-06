@@ -3,7 +3,7 @@
     <div class="modal-card">
         <header class="modal-card-head">
             <p class="modal-card-title">{{opts.title}}</p>
-            <button class="delete" aria-label="close" data-ng-click="ctrl.tourMdl = false;"></button>
+            <button class="delete" aria-label="close" data-ng-click="ctrl.tourMdlVisible = false;"></button>
         </header>
         <section class="modal-card-body">
             <div class="field">
@@ -90,8 +90,8 @@
             </div>
         </section>
         <footer class="modal-card-foot">
-            <button class="button is-success" data-ng-click="ctrl.submit(input);" data-ng-disabled="_.isEmpty(input.title)">{{opts.submit}}</button>
-            <button class="button" data-ng-click="ctrl.tourMdl = false;">Cancel</button>
+            <button class="button is-success" data-ng-click="ctrl.tourMdlSubmit(input);" data-ng-disabled="_.isEmpty(input.title)">{{opts.submit}}</button>
+            <button class="button" data-ng-click="ctrl.tourMdlVisible = false;">Cancel</button>
         </footer>
     </div>
 </div>

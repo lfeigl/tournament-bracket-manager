@@ -7,7 +7,7 @@
                     <p class="title">{{tour.all.length}}</p>
                 </div>
             </div>
-            <button class="level-item button is-success" data-ng-click="tour.tourMdl = true;">
+            <button class="level-item button is-success" data-ng-click="tour.tourMdlVisible = true;">
                 <span class="icon is-small">
                     <i class="fas fa-plus"></i>
                 </span>
@@ -36,6 +36,6 @@
             </tbody>
         </table>
 
-        <tour-mdl data-opts="{{tour.tourMdlOpts}}" data-ng-show="tour.tourMdl"></tour-mdl>
+        <tour-mdl data-opts="{{tour.tourMdlOpts}}" data-ng-show="tour.tourMdlVisible"></tour-mdl>
     </div>
 </section>
