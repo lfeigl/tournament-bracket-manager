@@ -109,7 +109,16 @@
                 <tbody>
                     <tr data-ng-repeat="tourPart in details.participants | orderBy: 'name'">
                         <td>{{tourPart.name}}</td>
-                        <td>{{tourPart.alias}}</td>
+                        <td>{{tourPart.alias}}
+                            <div class="is-inline" data-ng-show="tourPart.alias">
+                                <span class="icon has-text-success" title="Alias will be shown" data-ng-show="tourPart.tourSettings.useAlias">
+                                    <i class="fas fa-check"></i>
+                                </span>
+                                <span class="icon has-text-danger" title="Alias will not be shown" data-ng-hide="tourPart.tourSettings.useAlias">
+                                    <i class="fas fa-ban"></i>
+                                </span>
+                            </div>
+                        </td>
                         <td>
                             <button class="button is-pulled-right" data-ng-click="details.confirm(tourPart._id);">
                                 <span class="icon has-text-danger">
