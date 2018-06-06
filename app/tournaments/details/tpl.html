@@ -3,7 +3,7 @@
         <p class="title is-3 is-inline">
             {{details.tournament.title}}
             <div class="is-pulled-right">
-                <button class="button" title="Edit this tournament" data-ng-click="details.editTourMdl = true;">
+                <button class="button" title="Edit this tournament" data-ng-click="details.tourMdlVisible = true;">
                     <span class="icon">
                         <i class="fas fa-pencil-alt"></i>
                     </span>
@@ -200,5 +200,7 @@
                 </div>
             </div>
         </div>
+
+        <tour-mdl data-opts="{{details.tourMdlOpts}}" data-ng-show="details.tourMdlVisible"></tour-mdl>
     </div>
 </section>

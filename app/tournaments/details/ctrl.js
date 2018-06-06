@@ -5,11 +5,18 @@ module.exports = app => {
     app.controller('DetailsCtrl', function ($document, $routeParams, TournamentSrvc, ParticipantSrvc) {
         const vm = this;
         vm.id = $routeParams.id;
+        vm.tourMdlVisible = false;
+        vm.tourMdlOpts = {
+            ctrl: 'details',
+            title: 'Edit this tournament',
+            submit: 'Save',
+        };
 
         vm.addParticipant = addParticipant;
         vm.deleteTournament = deleteTournament;
         vm.deleteParticipant = deleteParticipant;
         vm.confirm = confirm;
+        vm.tourMdlSubmit = editTournament;
 
         load();
 
@@ -64,6 +71,13 @@ module.exports = app => {
         function confirm (participantId) {
             vm.participantId = participantId;
             vm.delPartMdl = true;
+        }
+
+        function editTournament (edit) {
+            TournamentSrvc.update(vm.id, edit).then(() => {
+                load();
+                vm.tourMdlVisible = false;
+            }).catch(errorHandler);
         }
     });
 };
