@@ -1,3 +1,3 @@
 module.exports = app => {
-    require('./ctrl.js')(app);
+    require('./controller.js')(app);
 };
