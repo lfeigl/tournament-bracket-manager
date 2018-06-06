@@ -3,7 +3,7 @@
     <div class="modal-card">
         <header class="modal-card-head">
             <p class="modal-card-title">Create new tournament</p>
-            <button class="delete" aria-label="close" data-ng-click="tour.addTourMdl = false;"></button>
+            <button class="delete" aria-label="close" data-ng-click="ctrl.addTourMdl = false;"></button>
         </header>
         <section class="modal-card-body">
             <div class="field">
@@ -90,8 +90,8 @@
             </div>
         </section>
         <footer class="modal-card-foot">
-            <button class="button is-success" data-ng-click="tour.add(input);" data-ng-disabled="_.isEmpty(input.title)">Create</button>
-            <button class="button" data-ng-click="tour.addTourMdl = false;">Cancel</button>
+            <button class="button is-success" data-ng-click="ctrl.add(input);" data-ng-disabled="_.isEmpty(input.title)">Create</button>
+            <button class="button" data-ng-click="ctrl.addTourMdl = false;">Cancel</button>
         </footer>
     </div>
 </div>

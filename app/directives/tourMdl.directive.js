@@ -3,7 +3,7 @@ module.exports = app => {
         return {
             template: require('./tourMdl.tpl.html'),
             link: (scope, element, attrs) => {
-                console.log(scope);
+                scope.ctrl = scope[attrs.ctrl];
             },
         };
     });
