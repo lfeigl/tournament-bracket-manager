@@ -4,9 +4,9 @@ module.exports = app => {
 
         srvc.getAll = getAll;
         srvc.addParticipant = addParticipant;
-        srvc.update = update;
         srvc.addSetting = addSetting;
         srvc.getDetails = getDetails;
+        srvc.update = update;
         srvc.remove = remove;
 
         function getAll () {
@@ -17,16 +17,16 @@ module.exports = app => {
             return $http.post('/api/participants', participant);
         }
 
-        function update (participantId, update) {
-            return $http.post(`/api/participants/${participantId}`, update);
-        }
-
         function addSetting (setting) {
             return $http.post('/api/participants/setting', setting);
         }
 
         function getDetails (participantIds) {
             return $http.post('/api/participants/details', participantIds);
+        }
+
+        function update (participantId, update) {
+            return $http.patch(`/api/participants/${participantId}`, update);
         }
 
         function remove (participantId) {
