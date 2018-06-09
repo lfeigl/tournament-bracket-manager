@@ -11,7 +11,7 @@
                                     <i class="fas fa-pencil-alt"></i>
                                 </span>
                             </button>
-                            <button class="button is-success" data-ng-show="pp.editMode">
+                            <button class="button is-success" data-ng-click="pp.editMode = false;" data-ng-show="pp.editMode">
                                 Save
                             </button>
                         </div>
@@ -29,13 +29,13 @@
                                 <td>
                                     <span data-ng-hide="pp.editMode">{{participant.name}}</span>
                                     <div class="control" data-ng-show="pp.editMode">
-                                        <input class="input" type="text" placeholder="{{participant.name}}">
+                                        <input class="input" type="text" placeholder="required" data-ng-value="participant.name" data-ng-model="edit.name" data-ng-class="{ 'is-danger': _.isEmpty(edit.name), 'is-success': !_.isEmpty(edit.name) }">
                                     </div>
                                 </td>
                                 <td>
                                     <span data-ng-hide="pp.editMode">{{participant.alias}}</span>
                                     <div class="control" data-ng-show="pp.editMode">
-                                        <input class="input" type="text" placeholder="{{participant.alias}}">
+                                        <input class="input" type="text" placeholder="optional" data-ng-value="participant.alias" data-ng-model="edit.alias">
                                     </div>
                                 </td>
                                 <td>
