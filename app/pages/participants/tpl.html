@@ -3,7 +3,19 @@
         <div class="columns">
             <div class="column is-8">
                 <div class="box">
-                    <p class="title is-5">All participants</p>
+                    <p class="title is-5 is-inline">
+                        All participants
+                        <div class="is-pulled-right">
+                            <button class="button" title="Edit the participants" data-ng-click="pp.editMode = true;" data-ng-hide="pp.editMode">
+                                <span class="icon">
+                                    <i class="fas fa-pencil-alt"></i>
+                                </span>
+                            </button>
+                            <button class="button is-success" data-ng-show="pp.editMode">
+                                Save
+                            </button>
+                        </div>
+                    </p>
                     <table class="table is-fullwidth">
                         <thead>
                             <tr>
@@ -14,21 +26,24 @@
                         </thead>
                         <tbody>
                             <tr data-ng-repeat="participant in pp.all | orderBy: 'name'">
-                                <td>{{participant.name}}</td>
-                                <td>{{participant.alias}}</td>
                                 <td>
-                                    <div class="is-pulled-right">
-                                        <button class="button" title="Edit this participant" data-ng-click="">
-                                            <span class="icon">
-                                                <i class="fas fa-pencil-alt"></i>
-                                            </span>
-                                        </button>
-                                        <button class="button" title="Delete this participant" data-ng-click="pp.confirm(participant._id);">
-                                            <span class="icon has-text-danger">
-                                                <i class="fas fa-trash"></i>
-                                            </span>
-                                        </button>
+                                    <span data-ng-hide="pp.editMode">{{participant.name}}</span>
+                                    <div class="control" data-ng-show="pp.editMode">
+                                        <input class="input" type="text" placeholder="{{participant.name}}">
                                     </div>
+                                </td>
+                                <td>
+                                    <span data-ng-hide="pp.editMode">{{participant.alias}}</span>
+                                    <div class="control" data-ng-show="pp.editMode">
+                                        <input class="input" type="text" placeholder="{{participant.alias}}">
+                                    </div>
+                                </td>
+                                <td>
+                                    <button class="button is-pulled-right" title="Delete this participant" data-ng-click="pp.confirm(participant._id);">
+                                        <span class="icon has-text-danger">
+                                            <i class="fas fa-trash"></i>
+                                        </span>
+                                    </button>
                                 </td>
                             </tr>
                         </tbody>
