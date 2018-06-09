@@ -23,6 +23,18 @@ module.exports = {
             res.send(result);
         });
     },
+    update: (req, res, next) => {
+        const collection = db.get('participants');
+        const participantId = new ObjectId(req.params.participantId);
+        const selector = { _id: participantId };
+        const update = { $set: req.body };
+
+        collection.updateOne(selector, update, (err, result) => {
+            if (err) return next(err);
+
+            res.send(result);
+        });
+    },
     addSetting: (req, res, next) => {
         const collection = db.get('participants');
         const participantId = new ObjectId(req.body.participantId);
