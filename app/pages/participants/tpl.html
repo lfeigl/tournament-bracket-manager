@@ -3,19 +3,7 @@
         <div class="columns">
             <div class="column is-8">
                 <div class="box">
-                    <p class="title is-5 is-inline">
-                        All participants
-                        <div class="is-pulled-right">
-                            <button class="button" title="Edit the participants" data-ng-click="pp.editMode = true;" data-ng-hide="pp.editMode">
-                                <span class="icon">
-                                    <i class="fas fa-pencil-alt"></i>
-                                </span>
-                            </button>
-                            <button class="button is-success" data-ng-click="pp.editMode = false;" data-ng-show="pp.editMode">
-                                Save
-                            </button>
-                        </div>
-                    </p>
+                    <p class="title is-5">All participants</p>
                     <table class="table is-fullwidth">
                         <thead>
                             <tr>
@@ -39,11 +27,21 @@
                                     </div>
                                 </td>
                                 <td>
-                                    <button class="button is-pulled-right" title="Delete this participant" data-ng-click="pp.confirm(participant._id);">
-                                        <span class="icon has-text-danger">
-                                            <i class="fas fa-trash"></i>
-                                        </span>
-                                    </button>
+                                    <div class="is-pulled-right">
+                                        <button class="button" title="Edit this participant" data-ng-click="pp.editMode = true;" data-ng-hide="pp.editMode">
+                                            <span class="icon">
+                                                <i class="fas fa-pencil-alt"></i>
+                                            </span>
+                                        </button>
+                                        <button class="button is-success" data-ng-click="pp.editMode = false;" data-ng-show="pp.editMode">
+                                            Save
+                                        </button>
+                                        <button class="button" title="Delete this participant" data-ng-click="pp.confirm(participant._id);" data-ng-hide="pp.editMode">
+                                            <span class="icon has-text-danger">
+                                                <i class="fas fa-trash"></i>
+                                            </span>
+                                        </button>
+                                    </div>
                                 </td>
                             </tr>
                         </tbody>
