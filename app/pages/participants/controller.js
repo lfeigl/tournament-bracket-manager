@@ -27,8 +27,10 @@ module.exports = app => {
         }
 
         function edit (id, edit) {
-            vm.editPart = null;
-            ParticipantSrvc.update(id, edit).then(loadAll).catch(errorHandler);
+            ParticipantSrvc.update(id, edit).then(() => {
+                vm.editPart = null;
+                loadAll();
+            }).catch(errorHandler);
         }
 
         function confirm (id) {
@@ -37,8 +39,10 @@ module.exports = app => {
         }
 
         function remove () {
-            ParticipantSrvc.remove(vm.id).then(loadAll).catch(errorHandler);
-            vm.activeModal = false;
+            ParticipantSrvc.remove(vm.id).then(() => {
+                vm.activeModal = false;
+                loadAll();
+            }).catch(errorHandler);
         }
     });
 };
