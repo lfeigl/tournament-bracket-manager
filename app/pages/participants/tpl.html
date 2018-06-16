@@ -33,7 +33,7 @@
                                                 <i class="fas fa-pencil-alt"></i>
                                             </span>
                                         </button>
-                                        <button class="button is-success" data-ng-click="pp.editPart = null;" data-ng-show="pp.editPart === participant._id">
+                                        <button class="button is-success" data-ng-click="pp.edit(participant._id, edit);" data-ng-show="pp.editPart === participant._id">
                                             Save
                                         </button>
                                         <button class="button" title="Delete this participant" data-ng-click="pp.confirm(participant._id);" data-ng-hide="pp.editPart === participant._id">

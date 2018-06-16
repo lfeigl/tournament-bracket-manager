@@ -3,8 +3,10 @@ const errorHandler = require('../../misc/error-handler.js');
 module.exports = app => {
     app.controller('ParticipantCtrl', function (ParticipantSrvc) {
         const vm = this;
+        vm.editPart = null;
 
         vm.add = add;
+        vm.edit = edit;
         vm.confirm = confirm;
         vm.remove = remove;
 
@@ -18,6 +20,11 @@ module.exports = app => {
 
         function add (participant) {
             ParticipantSrvc.addParticipant(participant).then(loadAll).catch(errorHandler);
+        }
+
+        function edit (id, edit) {
+            vm.editPart = null;
+            ParticipantSrvc.update(id, edit).then(loadAll).catch(errorHandler);
         }
 
         function confirm (id) {
