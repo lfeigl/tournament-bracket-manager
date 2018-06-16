@@ -36,6 +36,9 @@
                                         <button class="button is-success" data-ng-click="pp.edit(participant._id, edit);" data-ng-show="pp.editPart === participant._id"
                                             data-ng-disabled="_.isEmpty(edit.name)"> Save
                                         </button>
+                                        <button class="button is-danger" data-ng-click="pp.editPart = null;" data-ng-show="pp.editPart === participant._id">
+                                            Cancel
+                                        </button>
                                         <button class="button" title="Delete this participant" data-ng-click="pp.confirm(participant._id);" data-ng-hide="pp.editPart === participant._id">
                                             <span class="icon has-text-danger">
                                                 <i class="fas fa-trash"></i>
