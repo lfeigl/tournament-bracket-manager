@@ -57,7 +57,7 @@
                     <div class="field">
                         <label class="label">Name</label>
                         <div class="control has-icons-left">
-                            <input class="input" type="text" placeholder="required" data-ng-model="input.name" data-ng-class="{ 'is-danger': _.isEmpty(input.name), 'is-success': !_.isEmpty(input.name) }">
+                            <input class="input" type="text" placeholder="required" data-ng-model="pp.input.name" data-ng-class="{ 'is-danger': _.isEmpty(pp.input.name), 'is-success': !_.isEmpty(pp.input.name) }">
                             <span class="icon is-small is-left">
                                 <i class="fas fa-user"></i>
                             </span>
@@ -67,7 +67,7 @@
                     <div class="field">
                         <label class="label">Alias</label>
                         <div class="control has-icons-left">
-                            <input class="input" type="text" placeholder="optional" data-ng-model="input.alias">
+                            <input class="input" type="text" placeholder="optional" data-ng-model="pp.input.alias">
                             <span class="icon is-small is-left">
                                 <i class="fas fa-user-plus"></i>
                             </span>
@@ -76,7 +76,7 @@
 
                     <div class="field">
                         <div class="control">
-                            <button class="button is-primary" data-ng-click="pp.add(input);" data-ng-disabled="_.isEmpty(input.name)">
+                            <button class="button is-primary" data-ng-click="pp.add();" data-ng-disabled="_.isEmpty(pp.input.name)">
                                 <span class="icon is-small">
                                     <i class="fas fa-plus"></i>
                                 </span>

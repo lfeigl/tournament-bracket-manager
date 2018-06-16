@@ -4,6 +4,7 @@ module.exports = app => {
     app.controller('ParticipantCtrl', function (ParticipantSrvc) {
         const vm = this;
         vm.editPart = null;
+        vm.input = null;
 
         vm.add = add;
         vm.edit = edit;
@@ -18,8 +19,11 @@ module.exports = app => {
             }).catch(errorHandler);
         }
 
-        function add (participant) {
-            ParticipantSrvc.addParticipant(participant).then(loadAll).catch(errorHandler);
+        function add () {
+            ParticipantSrvc.addParticipant(vm.input).then(() => {
+                vm.input = null;
+                loadAll();
+            }).catch(errorHandler);
         }
 
         function edit (id, edit) {
