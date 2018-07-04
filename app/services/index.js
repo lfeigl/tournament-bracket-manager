@@ -1,4 +1,4 @@
 module.exports = app => {
-    require('./tournament.srvc.js')(app);
-    require('./participant.srvc.js')(app);
+    require('./tournament.service.js')(app);
+    require('./participant.service.js')(app);
 };

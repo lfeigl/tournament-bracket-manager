@@ -1,0 +1,41 @@
+<section class="section">
+    <div class="container">
+        <div class="level">
+            <div class="level-item has-text-centered">
+                <div>
+                    <p class="heading">Tournaments</p>
+                    <p class="title">{{tour.all.length}}</p>
+                </div>
+            </div>
+            <button class="level-item button is-success" data-ng-click="tour.tourMdlVisible = true;">
+                <span class="icon is-small">
+                    <i class="fas fa-plus"></i>
+                </span>
+                <span>Create new</span>
+            </button>
+        </div>
+
+        <hr>
+
+        <table class="table is-fullwidth">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr data-ng-repeat="tournament in tour.all | orderBy: 'title'">
+                    <td>
+                        <a href="/tournaments/{{tournament._id}}#info">{{tournament.title}}</a>
+                    </td>
+                    <td>{{tournament.date.from | date: "EEEE, dd.MM.yyyy"}} - {{tournament.date.to | date: "EEEE, dd.MM.yyyy"}}</td>
+                    <td>{{tournament.time.from | date: "HH:mm"}} - {{tournament.time.to | date: "HH:mm"}}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <tour-mdl data-opts="{{tour.tourMdlOpts}}" data-ng-show="tour.tourMdlVisible"></tour-mdl>
+    </div>
+</section>

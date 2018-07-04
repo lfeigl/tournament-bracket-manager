@@ -3,7 +3,7 @@ const ObjectId = require('mongodb').ObjectId;
 const db = require('../mongodb.js');
 
 module.exports = {
-    getAll: function (req, res, next) {
+    getAll: (req, res, next) => {
         const collection = db.get('participants');
         const projection = { name: 1, alias: 1 };
 
@@ -13,7 +13,7 @@ module.exports = {
             res.send(participants);
         });
     },
-    addParticipant: function (req, res, next) {
+    addParticipant: (req, res, next) => {
         const collection = db.get('participants');
         const participant = req.body;
 
@@ -23,7 +23,7 @@ module.exports = {
             res.send(result);
         });
     },
-    addSetting: function (req, res, next) {
+    addSetting: (req, res, next) => {
         const collection = db.get('participants');
         const participantId = new ObjectId(req.body.participantId);
         const tournamentId = new ObjectId(req.body.tournamentId);
@@ -45,7 +45,7 @@ module.exports = {
             });
         });
     },
-    getDetails: function (req, res, next) {
+    getDetails: (req, res, next) => {
         const collection = db.get('participants');
         const participantIds = req.body;
         const objectIds = participantIds.map(participantId => {
@@ -59,7 +59,19 @@ module.exports = {
             res.send(participant);
         });
     },
-    delete: function (req, res, next) {
+    update: (req, res, next) => {
+        const collection = db.get('participants');
+        const participantId = new ObjectId(req.params.participantId);
+        const selector = { _id: participantId };
+        const update = { $set: req.body };
+
+        collection.updateOne(selector, update, (err, result) => {
+            if (err) return next(err);
+
+            res.send(result);
+        });
+    },
+    delete: (req, res, next) => {
         const collection = db.get('participants');
         const participantId = new ObjectId(req.params.participantId);
         const selector = { _id: participantId };

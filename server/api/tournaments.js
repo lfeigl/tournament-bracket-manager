@@ -2,7 +2,7 @@ const ObjectId = require('mongodb').ObjectId;
 const db = require('../mongodb.js');
 
 module.exports = {
-    getAll: function (req, res, next) {
+    getAll: (req, res, next) => {
         const collection = db.get('tournaments');
 
         collection.find().toArray((err, tournaments) => {
@@ -11,7 +11,7 @@ module.exports = {
             res.send(tournaments);
         });
     },
-    getOne: function (req, res, next) {
+    getOne: (req, res, next) => {
         const collection = db.get('tournaments');
         const tournamentId = new ObjectId(req.params.tournamentId);
         const selector = { _id: tournamentId };
@@ -26,7 +26,7 @@ module.exports = {
             }
         });
     },
-    addTournament: function (req, res, next) {
+    addTournament: (req, res, next) => {
         const collection = db.get('tournaments');
         const tournament = req.body;
 
@@ -36,7 +36,7 @@ module.exports = {
             res.send(result);
         });
     },
-    update: function (req, res, next) {
+    update: (req, res, next) => {
         const collection = db.get('tournaments');
         const tournamentId = new ObjectId(req.params.tournamentId);
         const selector = { _id: tournamentId };
@@ -48,7 +48,7 @@ module.exports = {
             res.send(result);
         });
     },
-    addParticipant: function (req, res, next) {
+    addParticipant: (req, res, next) => {
         const collection = db.get('tournaments');
         const tournamentId = new ObjectId(req.params.tournamentId);
         const participantId = req.params.participantId;
@@ -61,7 +61,7 @@ module.exports = {
             res.send(result);
         });
     },
-    deleteTournament: function (req, res, next) {
+    deleteTournament: (req, res, next) => {
         const collection = db.get('tournaments');
         const tournamentId = new ObjectId(req.params.tournamentId);
         const selector = { _id: tournamentId };
@@ -72,7 +72,7 @@ module.exports = {
             res.send(result);
         });
     },
-    deleteParticipant: function (req, res, next) {
+    deleteParticipant: (req, res, next) => {
         const collection = db.get('tournaments');
         const tournamentId = new ObjectId(req.params.tournamentId);
         const participantId = req.params.participantId;

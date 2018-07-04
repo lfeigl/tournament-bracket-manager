@@ -6,6 +6,7 @@ module.exports = app => {
         srvc.addParticipant = addParticipant;
         srvc.addSetting = addSetting;
         srvc.getDetails = getDetails;
+        srvc.update = update;
         srvc.remove = remove;
 
         function getAll () {
@@ -22,6 +23,10 @@ module.exports = app => {
 
         function getDetails (participantIds) {
             return $http.post('/api/participants/details', participantIds);
+        }
+
+        function update (participantId, update) {
+            return $http.patch(`/api/participants/${participantId}`, update);
         }
 
         function remove (participantId) {

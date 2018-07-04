@@ -1,12 +1,19 @@
 <section class="section">
     <div class="container">
-        <p class="title is-3">
+        <p class="title is-3 is-inline">
             {{details.tournament.title}}
-            <button class="button is-pulled-right" data-ng-click="details.delTourMdl = true;">
-                <span class="icon has-text-danger">
-                    <i class="fas fa-trash"></i>
-                </span>
-            </button>
+            <div class="is-pulled-right">
+                <button class="button" title="Edit this tournament" data-ng-click="details.tourMdlVisible = true;">
+                    <span class="icon">
+                        <i class="fas fa-pencil-alt"></i>
+                    </span>
+                </button>
+                <button class="button" title="Delete this tournament" data-ng-click="details.delTourMdl = true;">
+                    <span class="icon has-text-danger">
+                        <i class="fas fa-trash"></i>
+                    </span>
+                </button>
+            </div>
         </p>
 
         <div class="tabs is-centered">
@@ -26,6 +33,16 @@
         <div data-ng-show="isActiveHash('info')">
             <div class="columns">
                 <div class="column is-6">
+                    <div class="box">
+                        <p class="title is-5">Organizer</p>
+                        <p data-ng-hide="_.isEmpty(details.tournament.organizer)">
+                            {{details.tournament.organizer}}
+                        </p>
+                        <p data-ng-show="_.isEmpty(details.tournament.organizer)">
+                            <em>No organizer given.</em>
+                        </p>
+                    </div>
+
                     <div class="box">
                         <p class="title is-5">Description</p>
                         <p data-ng-hide="_.isEmpty(details.tournament.description)">
@@ -92,7 +109,16 @@
                 <tbody>
                     <tr data-ng-repeat="tourPart in details.participants | orderBy: 'name'">
                         <td>{{tourPart.name}}</td>
-                        <td>{{tourPart.alias}}</td>
+                        <td>{{tourPart.alias}}
+                            <div class="is-inline" data-ng-show="tourPart.alias">
+                                <span class="icon has-text-success" title="Alias will be shown" data-ng-show="tourPart.tourSettings.useAlias">
+                                    <i class="fas fa-check"></i>
+                                </span>
+                                <span class="icon has-text-danger" title="Alias will not be shown" data-ng-hide="tourPart.tourSettings.useAlias">
+                                    <i class="fas fa-ban"></i>
+                                </span>
+                            </div>
+                        </td>
                         <td>
                             <button class="button is-pulled-right" data-ng-click="details.confirm(tourPart._id);">
                                 <span class="icon has-text-danger">
@@ -127,6 +153,11 @@
                     </tr>
                 </tbody>
             </table>
+            <div class="level" data-ng-show="details.isLoading">
+                <span class="icon is-large level-item">
+                    <i class="fas fa-2x fa-spinner fa-pulse"></i>
+                </span>
+            </div>
             <button class="button is-primary is-fullwidth" data-ng-click="details.addingPart = true;" data-ng-disabled="details.addingPart">
                 <span class="icon is-small">
                     <i class="fas fa-plus"></i>
@@ -183,5 +214,7 @@
                 </div>
             </div>
         </div>
+
+        <tour-mdl data-opts="{{details.tourMdlOpts}}" data-ng-show="details.tourMdlVisible"></tour-mdl>
     </div>
 </section>

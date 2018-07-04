@@ -31,9 +31,9 @@
     "css-loader": "^0.28.11",
     "html-loader": "^0.5.5",
     "node-sass": "^4.9.0",
-    "sass-loader": "^7.0.1",
+    "sass-loader": "^7.0.3",
     "style-loader": "^0.21.0",
-    "webpack": "^4.10.2",
-    "webpack-cli": "^2.1.4"
+    "webpack": "^4.11.1",
+    "webpack-cli": "^3.0.2"
   }
 }

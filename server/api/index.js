@@ -21,6 +21,7 @@ router.get('/participants', participants.getAll);
 router.post('/participants', participants.addParticipant);
 router.post('/participants/setting', participants.addSetting);
 router.post('/participants/details', participants.getDetails);
+router.patch('/participants/:participantId', participants.update);
 router.delete('/participants/:participantId', participants.delete);
 
 router.use((err, req, res, next) => {
