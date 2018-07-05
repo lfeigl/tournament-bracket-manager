@@ -69,7 +69,7 @@ module.exports = app => {
         function deleteTournament () {
             TournamentSrvc.deleteTournament(vm.id).then(() => {
                 vm.delTourModal = false;
-                _.first($document).location = '/tournaments';
+                _.head($document).location = '/tournaments';
             }).catch(errorHandler);
         }
 
