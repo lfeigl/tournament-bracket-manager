@@ -21,4 +21,10 @@ module.exports = (app) => {
             return tab === hash;
         };
     });
+
+    app.run(($rootScope, $route) => {
+        $rootScope.$on('$routeChangeSuccess', () => {
+            $rootScope.pageTitle = $route.current.title;
+        });
+    });
 };

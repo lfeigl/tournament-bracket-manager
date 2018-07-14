@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-ng-app="tbm">
 
 <head>
     <base href="/">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tournament Bracket Manager</title>
+    <title data-ng-bind="pageTitle + ' - Tournament Bracket Manager'">Tournament Bracket Manager</title>
     <link rel="shortcut icon" type="image/x-icon" href="./favicon.ico">
 </head>
 
-<body class="has-navbar-fixed-top" data-ng-app="tbm">
+<body class="has-navbar-fixed-top">
     <nav class="navbar is-link is-fixed-top" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
             <a class="navbar-item" data-ng-class="{ 'is-active': isActiveTab('home') }" href="/home">TBM</a>
