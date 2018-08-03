@@ -4,6 +4,8 @@ require('bulma-extensions/bulma-slider/dist/css/bulma-slider.min.css');
 require('../public/js/fontawesome.js');
 require('../public/css/main.css');
 
+window.jQuery = require('jquery');
+
 const angular = require('angular');
 const app = angular.module('tbm', [
     require('angular-route'),
