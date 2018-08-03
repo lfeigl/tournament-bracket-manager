@@ -1,4 +1,6 @@
 require('bulma');
+require('bulma-extensions/bulma-slider/dist/js/bulma-slider.min.js');
+require('bulma-extensions/bulma-slider/dist/css/bulma-slider.min.css');
 require('../public/js/fontawesome.js');
 require('../public/css/main.css');
 
