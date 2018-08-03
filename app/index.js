@@ -5,6 +5,8 @@ require('../public/js/fontawesome.js');
 require('../public/css/main.css');
 
 window.jQuery = require('jquery');
+require('jquery-bracket/dist/jquery.bracket.min.js');
+require('jquery-bracket/dist/jquery.bracket.min.css');
 
 const angular = require('angular');
 const app = angular.module('tbm', [
