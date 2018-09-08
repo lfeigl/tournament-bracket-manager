@@ -1,18 +1,18 @@
 const MongoClient = require('mongodb').MongoClient;
-const mongoConfig = require('../tbm.config.js').mongoDB;
+const dbConfig = require('../tbm.config.js').database;
 
 const opts = { useNewUrlParser: true };
 let db = null;
 
 module.exports = {
     connect: done => {
-        if (db) return done(null, mongoConfig);
+        if (db) return done(null, dbConfig);
 
-        MongoClient.connect(`mongodb://${mongoConfig.server}:${mongoConfig.port}`, opts, (err, client) => {
+        MongoClient.connect(`mongodb://${dbConfig.server}:${dbConfig.port}`, opts, (err, client) => {
             if (err) return done(err);
 
-            db = client.db(mongoConfig.dbName);
-            done(null, mongoConfig);
+            db = client.db(dbConfig.name);
+            done(null, dbConfig);
         });
     },
     get: collection => {
