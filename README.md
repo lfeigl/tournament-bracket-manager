@@ -6,6 +6,14 @@ A simple manager for tournament brackets.
 * [MongoDB](https://www.mongodb.com)
 * `npm install`
 
+## Configuration
+You can configure TBM in the `tbm.config.js`:
+* `port` (number): The port on which TBM will be running. _(Default: `1337`)_
+* `MongoDB`: Configurations concerning MongoDB
+  * `server` (string): The server on which MongoDB is running. _(Default: `'localhost'`)_
+  * `port` (number): The port on which MongoDB is running. _(Default: `27017`)_
+  * `dbName` (string): The name of the database TBM should use. _(Default: `'tbm-db'`)_
+
 ## Development
 ### Build the client
 `npm run build-client`
