@@ -1,6 +1,6 @@
 const _ = require('lodash');
 const ObjectId = require('mongodb').ObjectId;
-const db = require('../mongodb.js');
+const db = require('../database.js');
 
 module.exports = {
     getAll: (req, res, next) => {
