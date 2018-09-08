@@ -2,7 +2,6 @@ require('bulma');
 require('bulma-extensions/bulma-slider/dist/js/bulma-slider.min.js');
 require('bulma-extensions/bulma-slider/dist/css/bulma-slider.min.css');
 require('@fortawesome/fontawesome-free/js/all.min.js');
-require('../public/css/main.css');
 
 window.jQuery = require('jquery');
 require('jquery-bracket/dist/jquery.bracket.min.js');
