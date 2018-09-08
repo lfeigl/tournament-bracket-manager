@@ -21,8 +21,8 @@ server.all('/*', (req, res) => {
 db.connect((err, dbConfig) => {
     if (err) throw err;
 
-    console.log(`tbm connected to ${dbConfig.name} at ${dbConfig.server} on port ${dbConfig.port}.`);
+    console.log(`TBM is connected to database "${dbConfig.name}" at ${dbConfig.server} on port ${dbConfig.port}.`);
     server.listen(port, () => {
-        console.log(`tbm listening on port ${port}.`);
+        console.log(`TBM is listening on port ${port}.`);
     });
 });
