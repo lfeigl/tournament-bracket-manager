@@ -9,7 +9,6 @@ module.exports = {
         sourceMapFilename: 'app.map.js',
     },
     devtool: 'source-map',
-    watch: true,
     module: {
         rules: [
             {
