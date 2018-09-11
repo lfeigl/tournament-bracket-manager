@@ -14,15 +14,15 @@ A simple manager for tournament brackets.
   * `port` **(number)**: The port on which your database is running. *(default: `27017`)*
   * `name` **(string)**: The name of the database TBM should use. *(default: `'tbm-db'`)*
 
-## Development
-### Build the client
-`npm run build-client`
-> (re)builds the client at changes on the client side
-
-### Start the server
+## Start the server
 `npm start`
-> starts the server
 
-#### Optional
-`npm run build-server` **(requires [Node Supervisor](https://www.npmjs.com/package/supervisor))**
-> (re)starts the server at changes on the server side
+## Developing
+`npm run build-client`
+> build the client once
+---
+`npm run watch-client`
+> build the client at changes on the client side
+---
+`npm run watch-server` **(requires [Node Supervisor](https://www.npmjs.com/package/supervisor))**
+> restart the server at changes on the server side
