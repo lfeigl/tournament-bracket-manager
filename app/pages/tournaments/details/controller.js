@@ -27,6 +27,7 @@ module.exports = app => {
 
             TournamentSrvc.getOne(vm.id).then(res => {
                 vm.tournament = res.data;
+                _.head($document).title = `${vm.tournament.title} ${_.head($document).title}`;
 
                 ParticipantSrvc.getAll().then(res => {
                     vm.allParticipants = res.data;
