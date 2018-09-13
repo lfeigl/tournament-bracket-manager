@@ -1,6 +1,6 @@
 const _ = require('lodash');
 
-module.exports = (app) => {
+module.exports = app => {
     app.run($rootScope => {
         $rootScope._ = _;
     });
