@@ -12,7 +12,7 @@ module.exports = app => {
         }).when('/tournaments', {
             controller: 'TournamentCtrl',
             controllerAs: 'tour',
-            template: require('./pages/tournaments/tpl.html'),
+            template: require('./pages/tournaments/overview/tpl.html'),
             title: 'Tournaments',
         }).when('/tournaments/:id', {
             controller: 'DetailsCtrl',

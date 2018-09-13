@@ -1,4 +1,4 @@
 module.exports = app => {
-    require('./controller.js')(app);
+    require('./overview')(app);
     require('./details')(app);
 };
