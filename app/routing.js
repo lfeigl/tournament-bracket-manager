@@ -27,7 +27,7 @@ module.exports = app => {
             title: 'Participants',
         }).otherwise({
             template: require('./misc/not-found.tpl.html'),
-            title: '404',
+            title: '404 Not Found',
         });
     });
 };
