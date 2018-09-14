@@ -19,6 +19,7 @@ module.exports = app => {
             controllerAs: 'details',
             template: require('./pages/tournaments/details/tpl.html'),
             title: 'Details',
+            reloadOnSearch: false,
         }).when('/participants', {
             controller: 'ParticipantCtrl',
             controllerAs: 'pp',
