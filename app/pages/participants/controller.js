@@ -1,8 +1,11 @@
 module.exports = app => {
     app.controller('ParticipantCtrl', function (ParticipantSrvc, ErrorHandlerSrvc) {
         const vm = this;
+        vm.all = null;
         vm.editPart = null;
         vm.input = null;
+        vm.id = null;
+        vm.activeModal = false;
 
         vm.add = add;
         vm.edit = edit;

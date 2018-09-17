@@ -3,6 +3,7 @@ const _ = require('lodash');
 module.exports = app => {
     app.controller('ErrorHandlerCtrl', function ($rootScope, $location, ErrorHandlerSrvc) {
         const vm = this;
+        vm.formatted = null;
 
         vm.err = ErrorHandlerSrvc.err;
 
