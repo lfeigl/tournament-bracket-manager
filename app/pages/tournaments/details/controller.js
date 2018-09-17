@@ -1,7 +1,7 @@
 const _ = require('lodash');
 
 module.exports = app => {
-    app.controller('DetailsCtrl', function ($document, $routeParams, TournamentSrvc, ParticipantSrvc, ErrorHandlerSrvc) {
+    app.controller('DetailsCtrl', function ($document, $routeParams, $location, TournamentSrvc, ParticipantSrvc, ErrorHandlerSrvc) {
         const vm = this;
         vm.id = $routeParams.id;
         vm.isLoading = false;
@@ -69,7 +69,7 @@ module.exports = app => {
         function deleteTournament () {
             TournamentSrvc.deleteTournament(vm.id).then(() => {
                 vm.delTourModal = false;
-                _.head($document).location = '/tournaments';
+                $location.url('/tournaments');
             }).catch(ErrorHandlerSrvc.error);
         }
 
