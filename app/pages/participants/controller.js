@@ -1,7 +1,5 @@
-const errorHandler = require('../../misc/error-handler.js');
-
 module.exports = app => {
-    app.controller('ParticipantCtrl', function (ParticipantSrvc) {
+    app.controller('ParticipantCtrl', function (ParticipantSrvc, ErrorHandlerSrvc) {
         const vm = this;
         vm.editPart = null;
         vm.input = null;
@@ -16,21 +14,21 @@ module.exports = app => {
         function loadAll () {
             ParticipantSrvc.getAll().then(res => {
                 vm.all = res.data;
-            }).catch(errorHandler);
+            }).catch(ErrorHandlerSrvc.error);
         }
 
         function add () {
             ParticipantSrvc.addParticipant(vm.input).then(() => {
                 vm.input = null;
                 loadAll();
-            }).catch(errorHandler);
+            }).catch(ErrorHandlerSrvc.error);
         }
 
         function edit (id, edit) {
             ParticipantSrvc.update(id, edit).then(() => {
                 vm.editPart = null;
                 loadAll();
-            }).catch(errorHandler);
+            }).catch(ErrorHandlerSrvc.error);
         }
 
         function confirm (id) {
@@ -42,7 +40,7 @@ module.exports = app => {
             ParticipantSrvc.remove(vm.id).then(() => {
                 vm.activeModal = false;
                 loadAll();
-            }).catch(errorHandler);
+            }).catch(ErrorHandlerSrvc.error);
         }
     });
 };
