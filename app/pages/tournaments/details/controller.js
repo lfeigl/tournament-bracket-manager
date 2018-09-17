@@ -5,6 +5,12 @@ module.exports = app => {
         const vm = this;
         vm.id = $routeParams.id;
         vm.isLoading = false;
+        vm.tournament = null;
+        vm.participants = [];
+        vm.allParticipants = null;
+        vm.addingPart = false;
+        vm.delTourModal = false;
+        vm.delPartMdl = false;
         vm.tourMdlVisible = false;
         vm.tourMdlOpts = {
             ctrl: 'details',
@@ -21,7 +27,6 @@ module.exports = app => {
         load();
 
         function load () {
-            vm.participants = [];
             vm.isLoading = true;
 
             TournamentSrvc.getOne(vm.id).then(res => {

@@ -1,6 +1,7 @@
 module.exports = app => {
     app.controller('TournamentCtrl', function (TournamentSrvc, ErrorHandlerSrvc) {
         const vm = this;
+        vm.all = null;
         vm.tourMdlVisible = false;
         vm.tourMdlOpts = {
             ctrl: 'tour',
