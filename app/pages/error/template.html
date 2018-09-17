@@ -1,9 +1,9 @@
 <section class="hero is-danger is-bold is-fullheight">
     <div class="hero-body">
         <div class="container">
-            <p class="title is-1">{{error.err.status}}</p>
-            <p class="subtitle is-3">{{error.err.statusText}}</p>
-            <pre data-ng-hide="error.err.status === 404">{{error.formatted}}</pre>
+            <p class="title is-1">{{error.err.status || 'Error'}}</p>
+            <p class="subtitle is-3">{{error.err.statusText || error.err.message}}</p>
+            <pre data-ng-hide="error.err.status === 404">{{error.formatted || error.err.stack}}</pre>
         </div>
     </div>
 </section>

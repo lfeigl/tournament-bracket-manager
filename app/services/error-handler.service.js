@@ -7,7 +7,7 @@ module.exports = app => {
 
         function error (err) {
             srvc.err = err;
-            console.error('TBM Error Handler Service', err);
+            console.error('TBM Error Handler Service:', err);
             $location.url('/error');
         }
     });
