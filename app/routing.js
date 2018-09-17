@@ -25,6 +25,11 @@ module.exports = app => {
             controllerAs: 'pp',
             template: require('./pages/participants/template.html'),
             title: 'Participants',
+        }).when('/about', {
+            controller: 'AboutCtrl',
+            controllerAs: 'about',
+            template: require('./pages/about/template.html'),
+            title: 'About',
         }).when('/error', {
             controller: 'ErrorHandlerCtrl',
             controllerAs: 'error',
