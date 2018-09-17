@@ -1,6 +1,4 @@
 require('bulma');
-require('bulma-extensions/bulma-slider/dist/js/bulma-slider.min.js');
-require('bulma-extensions/bulma-slider/dist/css/bulma-slider.min.css');
 require('@fortawesome/fontawesome-free/js/all.min.js');
 
 window.jQuery = require('jquery');
