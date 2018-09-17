@@ -1,7 +1,7 @@
 module.exports = app => {
     app.directive('tourMdl', () => {
         return {
-            template: require('./tourMdl.tpl.html'),
+            template: require('./tourMdl.template.html'),
             link: (scope, element, attrs) => {
                 const opts = scope.$eval(attrs.opts);
 
