@@ -1,7 +1,7 @@
 const _ = require('lodash');
 
 module.exports = app => {
-    app.controller('DetailsCtrl', function ($document, $routeParams, $location, TournamentSrvc, ParticipantSrvc, ErrorHandlerSrvc) {
+    app.controller('DetailsCtrl', function ($rootScope, $routeParams, $location, TournamentSrvc, ParticipantSrvc, ErrorHandlerSrvc) {
         const vm = this;
         vm.id = $routeParams.id;
         vm.isLoading = false;
@@ -26,7 +26,7 @@ module.exports = app => {
 
             TournamentSrvc.getOne(vm.id).then(res => {
                 vm.tournament = res.data;
-                _.head($document).title = `${vm.tournament.title} ${_.head($document).title}`;
+                $rootScope.pageTitle = vm.tournament.title;
 
                 ParticipantSrvc.getAll().then(res => {
                     vm.allParticipants = res.data;
