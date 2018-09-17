@@ -3,7 +3,7 @@
         <div class="container">
             <p class="title is-1">{{error.err.status}}</p>
             <p class="subtitle is-3">{{error.err.statusText}}</p>
-            <pre>{{error.formatted}}</pre>
+            <pre data-ng-hide="error.err.status === 404">{{error.formatted}}</pre>
         </div>
     </div>
 </section>
