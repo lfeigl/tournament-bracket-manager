@@ -1,8 +1,7 @@
 const _ = require('lodash');
-const errorHandler = require('../../../misc/error-handler.js');
 
 module.exports = app => {
-    app.controller('DetailsCtrl', function ($document, $routeParams, TournamentSrvc, ParticipantSrvc) {
+    app.controller('DetailsCtrl', function ($document, $routeParams, TournamentSrvc, ParticipantSrvc, ErrorHandlerSrvc) {
         const vm = this;
         vm.id = $routeParams.id;
         vm.isLoading = false;
@@ -38,12 +37,12 @@ module.exports = app => {
                                 participant.tourSettings = participant.settings[vm.id];
                                 return participant;
                             });
-                        }).catch(errorHandler);
+                        }).catch(ErrorHandlerSrvc.error);
                     }
 
                     vm.isLoading = false;
-                }).catch(errorHandler);
-            }).catch(errorHandler);
+                }).catch(ErrorHandlerSrvc.error);
+            }).catch(ErrorHandlerSrvc.error);
         }
 
         function addParticipant (selection) {
@@ -53,7 +52,7 @@ module.exports = app => {
             TournamentSrvc.addParticipant(vm.id, selection.part._id).then(() => {
                 load();
                 addSetting(selection);
-            }).catch(errorHandler);
+            }).catch(ErrorHandlerSrvc.error);
         }
 
         function addSetting (selection) {
@@ -64,21 +63,21 @@ module.exports = app => {
                 setting: selection.useAlias || false,
             };
 
-            ParticipantSrvc.addSetting(setting).catch(errorHandler);
+            ParticipantSrvc.addSetting(setting).catch(ErrorHandlerSrvc.error);
         }
 
         function deleteTournament () {
             TournamentSrvc.deleteTournament(vm.id).then(() => {
                 vm.delTourModal = false;
                 _.head($document).location = '/tournaments';
-            }).catch(errorHandler);
+            }).catch(ErrorHandlerSrvc.error);
         }
 
         function deleteParticipant () {
             TournamentSrvc.deleteParticipant(vm.id, vm.participantId).then(() => {
                 load();
                 vm.delPartMdl = false;
-            }).catch(errorHandler);
+            }).catch(ErrorHandlerSrvc.error);
         }
 
         function confirm (participantId) {
@@ -90,7 +89,7 @@ module.exports = app => {
             TournamentSrvc.update(vm.id, edit).then(() => {
                 load();
                 vm.tourMdlVisible = false;
-            }).catch(errorHandler);
+            }).catch(ErrorHandlerSrvc.error);
         }
     });
 };
