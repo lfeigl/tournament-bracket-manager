@@ -25,6 +25,11 @@ module.exports = app => {
             controllerAs: 'pp',
             template: require('./pages/participants/tpl.html'),
             title: 'Participants',
+        }).when('/error', {
+            controller: 'ErrorHandlerCtrl',
+            controllerAs: 'error',
+            template: require('./pages/error/tpl.html'),
+            title: 'Error',
         }).otherwise({
             template: require('./misc/not-found.tpl.html'),
             title: '404 Not Found',
