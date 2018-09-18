@@ -3,6 +3,7 @@ const _ = require('lodash');
 module.exports = app => {
     app.controller('DetailsCtrl', function ($rootScope, $routeParams, $location, TournamentSrvc, ParticipantSrvc, ErrorHandlerSrvc) {
         const vm = this;
+        let tourBackup = null;
         vm.id = $routeParams.id;
         vm.isLoading = false;
         vm.tournament = null;
@@ -23,6 +24,8 @@ module.exports = app => {
         vm.deleteParticipant = deleteParticipant;
         vm.confirm = confirm;
         vm.tourMdlSubmit = editTournament;
+        vm.openTourMdl = openTourMdl;
+        vm.cancelTourMdl = cancelTourMdl;
 
         load();
 
@@ -95,6 +98,16 @@ module.exports = app => {
                 load();
                 vm.tourMdlVisible = false;
             }).catch(ErrorHandlerSrvc.error);
+        }
+
+        function openTourMdl () {
+            tourBackup = _.cloneDeep(vm.tournament);
+            vm.tourMdlVisible = true;
+        }
+
+        function cancelTourMdl () {
+            vm.tournament = tourBackup;
+            vm.tourMdlVisible = false;
         }
     });
 };
