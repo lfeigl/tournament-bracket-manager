@@ -91,7 +91,7 @@ module.exports = app => {
         }
 
         function editTournament (edit) {
-            TournamentSrvc.update(vm.id, edit).then(() => {
+            TournamentSrvc.update(vm.id, _.omit(edit, '_id')).then(() => {
                 load();
                 vm.tourMdlVisible = false;
             }).catch(ErrorHandlerSrvc.error);
