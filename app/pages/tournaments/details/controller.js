@@ -41,7 +41,7 @@ module.exports = app => {
 
                     if (!_.isEmpty(vm.tournament.participants)) {
                         ParticipantSrvc.getDetails(vm.tournament.participants).then(res => {
-                            vm.participants = res.data.map((participant) => {
+                            vm.participants = res.data.map(participant => {
                                 participant.tourSettings = participant.settings[vm.id];
                                 return participant;
                             });
