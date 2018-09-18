@@ -1,5 +1,5 @@
 module.exports = app => {
-    app.directive('tourMdl', () => {
+    app.directive('tourMdl', ($rootScope) => {
         return {
             scope: {
                 ctrl: '=',
@@ -7,6 +7,9 @@ module.exports = app => {
                 input: '=',
             },
             template: require('./tourMdl.template.html'),
+            link: (scope) => {
+                scope._ = $rootScope._;
+            },
         };
     });
 };
