@@ -3,12 +3,12 @@ module.exports = app => {
         $locationProvider.html5Mode(true);
 
         $routeProvider.when('/', {
-            redirectTo: '/home',
-        }).when('/home', {
-            controller: 'HomeCtrl',
-            controllerAs: 'home',
-            template: require('./pages/home/template.html'),
-            title: 'Home',
+            redirectTo: '/dashboard',
+        }).when('/dashboard', {
+            controller: 'DashboardCtrl',
+            controllerAs: 'dashboard',
+            template: require('./pages/dashboard/template.html'),
+            title: 'Dashboard',
         }).when('/tournaments', {
             controller: 'TournamentCtrl',
             controllerAs: 'tour',

@@ -13,7 +13,7 @@ module.exports = app => {
                 $rootScope.pageTitle = `${vm.err.status} ${vm.err.statusText}`;
             }
         } else {
-            $location.url('/home');
+            $location.url('/dashboard');
         }
     });
 };

@@ -1,5 +1,5 @@
 module.exports = app => {
-    require('./home')(app);
+    require('./dashboard')(app);
     require('./tournaments')(app);
     require('./participants')(app);
     require('./about')(app);
