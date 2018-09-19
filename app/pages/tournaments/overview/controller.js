@@ -8,8 +8,10 @@ module.exports = app => {
             title: 'Create new tournament',
             submit: 'Create',
         };
+        vm.tourMdlInput = {};
 
         vm.tourMdlSubmit = addTournament;
+        vm.cancelTourMdl = cancelTourMdl;
 
         loadAll();
 
@@ -24,6 +26,11 @@ module.exports = app => {
                 loadAll();
                 vm.tourMdlVisible = false;
             }).catch(ErrorHandlerSrvc.error);
+        }
+
+        function cancelTourMdl () {
+            vm.tourMdlInput = {};
+            vm.tourMdlVisible = false;
         }
     });
 };
