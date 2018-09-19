@@ -148,7 +148,7 @@
                             </label>
                         </td>
                         <td>
-                            <button class="button is-success" data-ng-click="details.addParticipant(select);">Save</button>
+                            <button class="button is-success" data-ng-click="details.addParticipant(select);" data-ng-disabled="_.isNil(select.part)">Save</button>
                         </td>
                     </tr>
                 </tbody>
