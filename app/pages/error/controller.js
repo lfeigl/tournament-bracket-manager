@@ -9,7 +9,7 @@ module.exports = app => {
 
         if (!_.isNull(vm.err)) {
             if (vm.err.status) {
-                vm.formatted = JSON.stringify(vm.err, null, 4);
+                vm.formatted = JSON.stringify(vm.err, null, 2);
                 $rootScope.pageTitle = `${vm.err.status} ${vm.err.statusText}`;
             }
         } else {
