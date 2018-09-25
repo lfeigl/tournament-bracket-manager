@@ -35,6 +35,7 @@ module.exports = app => {
             TournamentSrvc.getOne(vm.id).then(res => {
                 vm.tournament = res.data;
                 $rootScope.pageTitle = vm.tournament.title;
+                formatDates();
 
                 ParticipantSrvc.getAll().then(res => {
                     vm.allParticipants = res.data;
@@ -108,6 +109,28 @@ module.exports = app => {
         function cancelTourMdl () {
             vm.tournament = tourBackup;
             vm.tourMdlVisible = false;
+        }
+
+        function formatDates () {
+            if (!_.isNil(vm.tournament.date)) {
+                if (!_.isNil(vm.tournament.date.from)) {
+                    vm.tournament.date.from = new Date(vm.tournament.date.from);
+                }
+
+                if (!_.isNil(vm.tournament.date.to)) {
+                    vm.tournament.date.to = new Date(vm.tournament.date.to);
+                }
+            }
+
+            if (!_.isNil(vm.tournament.time)) {
+                if (!_.isNil(vm.tournament.time.from)) {
+                    vm.tournament.time.from = new Date(vm.tournament.time.from);
+                }
+
+                if (!_.isNil(vm.tournament.time.to)) {
+                    vm.tournament.time.to = new Date(vm.tournament.time.to);
+                }
+            }
         }
     });
 };
