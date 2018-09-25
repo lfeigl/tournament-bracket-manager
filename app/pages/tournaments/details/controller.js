@@ -112,25 +112,16 @@ module.exports = app => {
         }
 
         function formatDates () {
-            if (!_.isNil(vm.tournament.date)) {
-                if (!_.isNil(vm.tournament.date.from)) {
-                    vm.tournament.date.from = new Date(vm.tournament.date.from);
-                }
+            const firstLevel = [ 'date', 'time' ];
+            const secondLevel = [ 'from', 'to' ];
 
-                if (!_.isNil(vm.tournament.date.to)) {
-                    vm.tournament.date.to = new Date(vm.tournament.date.to);
-                }
-            }
-
-            if (!_.isNil(vm.tournament.time)) {
-                if (!_.isNil(vm.tournament.time.from)) {
-                    vm.tournament.time.from = new Date(vm.tournament.time.from);
-                }
-
-                if (!_.isNil(vm.tournament.time.to)) {
-                    vm.tournament.time.to = new Date(vm.tournament.time.to);
-                }
-            }
+            firstLevel.map(firstLevelItem => {
+                secondLevel.map(secondLevelItem => {
+                    if (!_.isNil(vm.tournament[firstLevelItem]) && !_.isNil(vm.tournament[firstLevelItem][secondLevelItem])) {
+                        vm.tournament[firstLevelItem][secondLevelItem] = new Date(vm.tournament[firstLevelItem][secondLevelItem]);
+                    }
+                });
+            });
         }
     });
 };
