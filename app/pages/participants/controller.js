@@ -3,9 +3,12 @@ module.exports = app => {
         const vm = this;
         vm.all = null;
         vm.editPart = null;
-        vm.input = null;
         vm.id = null;
         vm.activeModal = false;
+        vm.input = {
+            new: null,
+            edit: null,
+        };
 
         vm.add = add;
         vm.edit = edit;
@@ -21,14 +24,14 @@ module.exports = app => {
         }
 
         function add () {
-            ParticipantSrvc.addParticipant(vm.input).then(() => {
-                vm.input = null;
+            ParticipantSrvc.addParticipant(vm.input.new).then(() => {
+                vm.input.new = null;
                 loadAll();
             }).catch(ErrorHandlerSrvc.error);
         }
 
-        function edit (id, edit) {
-            ParticipantSrvc.update(id, edit).then(() => {
+        function edit (id) {
+            ParticipantSrvc.update(id, vm.input.edit).then(() => {
                 vm.editPart = null;
                 loadAll();
             }).catch(ErrorHandlerSrvc.error);
