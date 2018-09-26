@@ -1,3 +1,4 @@
 node_modules
+pid.log
 public/js/app.js
 public/js/app.map.js

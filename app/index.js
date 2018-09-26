@@ -1,6 +1,9 @@
 require('bulma');
-require('../public/js/fontawesome.js');
-require('../public/css/main.css');
+require('@fortawesome/fontawesome-free/js/all.min.js');
+
+window.jQuery = require('jquery');
+require('jquery-bracket/dist/jquery.bracket.min.js');
+require('jquery-bracket/dist/jquery.bracket.min.css');
 
 const angular = require('angular');
 const app = angular.module('tbm', [

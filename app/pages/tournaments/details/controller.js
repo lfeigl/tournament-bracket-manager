@@ -1,95 +1,125 @@
 const _ = require('lodash');
-const errorHandler = require('../../../misc/error-handler.js');
 
 module.exports = app => {
-    app.controller('DetailsCtrl', function ($document, $routeParams, TournamentSrvc, ParticipantSrvc) {
+    app.controller('DetailsCtrl', function ($rootScope, $routeParams, $location, TournamentSrvc, ParticipantSrvc, ErrorHandlerSrvc) {
         const vm = this;
+        let tourBackup = null;
         vm.id = $routeParams.id;
         vm.isLoading = false;
+        vm.tournament = null;
+        vm.participants = [];
+        vm.allParticipants = null;
+        vm.addingPart = false;
+        vm.delTourModal = false;
+        vm.delPartMdl = false;
         vm.tourMdlVisible = false;
         vm.tourMdlOpts = {
             ctrl: 'details',
             title: 'Edit this tournament',
             submit: 'Save',
         };
+        vm.input = {
+            part: null,
+            useAlias: null,
+        };
 
         vm.addParticipant = addParticipant;
         vm.deleteTournament = deleteTournament;
         vm.deleteParticipant = deleteParticipant;
-        vm.confirm = confirm;
         vm.tourMdlSubmit = editTournament;
+        vm.openTourMdl = openTourMdl;
+        vm.cancelTourMdl = cancelTourMdl;
 
         load();
 
         function load () {
-            vm.participants = [];
             vm.isLoading = true;
 
             TournamentSrvc.getOne(vm.id).then(res => {
                 vm.tournament = res.data;
+                $rootScope.pageTitle = vm.tournament.title;
+                formatDates();
 
                 ParticipantSrvc.getAll().then(res => {
                     vm.allParticipants = res.data;
 
                     if (!_.isEmpty(vm.tournament.participants)) {
                         ParticipantSrvc.getDetails(vm.tournament.participants).then(res => {
-                            vm.participants = res.data.map((participant) => {
+                            vm.participants = res.data.map(participant => {
                                 participant.tourSettings = participant.settings[vm.id];
                                 return participant;
                             });
-                        }).catch(errorHandler);
+                        }).catch(ErrorHandlerSrvc.error);
                     }
 
                     vm.isLoading = false;
-                }).catch(errorHandler);
-            }).catch(errorHandler);
+                }).catch(ErrorHandlerSrvc.error);
+            }).catch(ErrorHandlerSrvc.error);
         }
 
-        function addParticipant (selection) {
+        function addParticipant () {
             vm.isLoading = true;
             vm.addingPart = false;
 
-            TournamentSrvc.addParticipant(vm.id, selection.part._id).then(() => {
+            TournamentSrvc.addParticipant(vm.id, vm.input.part._id).then(() => {
                 load();
-                addSetting(selection);
-            }).catch(errorHandler);
+                addSetting();
+            }).catch(ErrorHandlerSrvc.error);
         }
 
-        function addSetting (selection) {
+        function addSetting () {
             const setting = {
-                participantId: selection.part._id,
+                participantId: vm.input.part._id,
                 tournamentId: vm.id,
                 settingName: 'useAlias',
-                setting: selection.useAlias || false,
+                setting: vm.input.useAlias || false,
             };
 
-            ParticipantSrvc.addSetting(setting).catch(errorHandler);
+            ParticipantSrvc.addSetting(setting).catch(ErrorHandlerSrvc.error);
         }
 
         function deleteTournament () {
             TournamentSrvc.deleteTournament(vm.id).then(() => {
                 vm.delTourModal = false;
-                _.first($document).location = '/tournaments';
-            }).catch(errorHandler);
+                $location.url('/tournaments');
+            }).catch(ErrorHandlerSrvc.error);
         }
 
         function deleteParticipant () {
             TournamentSrvc.deleteParticipant(vm.id, vm.participantId).then(() => {
                 load();
                 vm.delPartMdl = false;
-            }).catch(errorHandler);
-        }
-
-        function confirm (participantId) {
-            vm.participantId = participantId;
-            vm.delPartMdl = true;
+            }).catch(ErrorHandlerSrvc.error);
         }
 
         function editTournament (edit) {
-            TournamentSrvc.update(vm.id, edit).then(() => {
+            TournamentSrvc.update(vm.id, _.omit(edit, '_id')).then(() => {
                 load();
                 vm.tourMdlVisible = false;
-            }).catch(errorHandler);
+            }).catch(ErrorHandlerSrvc.error);
+        }
+
+        function openTourMdl () {
+            tourBackup = _.cloneDeep(vm.tournament);
+            vm.tourMdlVisible = true;
+        }
+
+        function cancelTourMdl () {
+            vm.tournament = tourBackup;
+            vm.tourMdlVisible = false;
+        }
+
+        function formatDates () {
+            const firstLevel = [ 'date', 'time' ];
+            const secondLevel = [ 'from', 'to' ];
+
+            firstLevel.map(firstLevelItem => {
+                secondLevel.map(secondLevelItem => {
+                    if (!_.isNil(vm.tournament[firstLevelItem]) && !_.isNil(vm.tournament[firstLevelItem][secondLevelItem])) {
+                        vm.tournament[firstLevelItem][secondLevelItem] = new Date(vm.tournament[firstLevelItem][secondLevelItem]);
+                    }
+                });
+            });
         }
     });
 };

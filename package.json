@@ -4,9 +4,11 @@
   "description": "A simple manager for tournament brackets.",
   "main": "server/index.js",
   "scripts": {
+    "postinstall": "npm run build-client",
     "start": "node server/index.js",
-    "build-server": "supervisor --watch server server/index.js",
-    "build-client": "webpack --config=webpack.config.js"
+    "build-client": "webpack",
+    "watch-client": "webpack -w",
+    "watch-server": "supervisor -w server -s -pid pid.log -n error server/index.js"
   },
   "repository": {
     "type": "git",
@@ -19,21 +21,24 @@
   },
   "homepage": "https://github.com/matze-kalle/tournament-bracket-manager#readme",
   "dependencies": {
-    "angular": "^1.7.0",
-    "angular-route": "^1.7.0",
+    "@fortawesome/fontawesome-free": "^5.3.1",
+    "angular": "^1.7.4",
+    "angular-route": "^1.7.4",
     "body-parser": "^1.18.3",
     "bulma": "^0.7.1",
     "express": "^4.16.3",
+    "jquery": "^3.3.1",
+    "jquery-bracket": "^0.11.1",
     "lodash": "^4.17.10",
-    "mongodb": "^3.1.0-beta4"
+    "mongodb": "^3.1.4"
   },
   "devDependencies": {
-    "css-loader": "^0.28.11",
+    "css-loader": "^1.0.0",
     "html-loader": "^0.5.5",
-    "node-sass": "^4.9.0",
-    "sass-loader": "^7.0.3",
-    "style-loader": "^0.21.0",
-    "webpack": "^4.11.1",
-    "webpack-cli": "^3.0.2"
+    "node-sass": "^4.9.3",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.0",
+    "webpack": "^4.17.2",
+    "webpack-cli": "^3.1.0"
   }
 }

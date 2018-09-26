@@ -1,14 +1,17 @@
-const errorHandler = require('../../misc/error-handler.js');
-
 module.exports = app => {
-    app.controller('ParticipantCtrl', function (ParticipantSrvc) {
+    app.controller('ParticipantCtrl', function (ParticipantSrvc, ErrorHandlerSrvc) {
         const vm = this;
+        vm.all = null;
         vm.editPart = null;
-        vm.input = null;
+        vm.id = null;
+        vm.activeModal = false;
+        vm.input = {
+            new: null,
+            edit: null,
+        };
 
         vm.add = add;
         vm.edit = edit;
-        vm.confirm = confirm;
         vm.remove = remove;
 
         loadAll();
@@ -16,33 +19,28 @@ module.exports = app => {
         function loadAll () {
             ParticipantSrvc.getAll().then(res => {
                 vm.all = res.data;
-            }).catch(errorHandler);
+            }).catch(ErrorHandlerSrvc.error);
         }
 
         function add () {
-            ParticipantSrvc.addParticipant(vm.input).then(() => {
-                vm.input = null;
+            ParticipantSrvc.addParticipant(vm.input.new).then(() => {
+                vm.input.new = null;
                 loadAll();
-            }).catch(errorHandler);
+            }).catch(ErrorHandlerSrvc.error);
         }
 
-        function edit (id, edit) {
-            ParticipantSrvc.update(id, edit).then(() => {
+        function edit (id) {
+            ParticipantSrvc.update(id, vm.input.edit).then(() => {
                 vm.editPart = null;
                 loadAll();
-            }).catch(errorHandler);
-        }
-
-        function confirm (id) {
-            vm.id = id;
-            vm.activeModal = true;
+            }).catch(ErrorHandlerSrvc.error);
         }
 
         function remove () {
             ParticipantSrvc.remove(vm.id).then(() => {
                 vm.activeModal = false;
                 loadAll();
-            }).catch(errorHandler);
+            }).catch(ErrorHandlerSrvc.error);
         }
     });
 };

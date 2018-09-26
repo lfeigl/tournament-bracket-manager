@@ -1,6 +1,6 @@
 const _ = require('lodash');
 
-module.exports = (app) => {
+module.exports = app => {
     app.run($rootScope => {
         $rootScope._ = _;
     });
@@ -20,5 +20,11 @@ module.exports = (app) => {
 
             return tab === hash;
         };
+    });
+
+    app.run(($rootScope, $route) => {
+        $rootScope.$on('$routeChangeSuccess', () => {
+            $rootScope.pageTitle = $route.current.title;
+        });
     });
 };
