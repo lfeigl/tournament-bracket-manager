@@ -18,6 +18,10 @@ module.exports = app => {
             title: 'Edit this tournament',
             submit: 'Save',
         };
+        vm.input = {
+            part: null,
+            useAlias: null,
+        };
 
         vm.addParticipant = addParticipant;
         vm.deleteTournament = deleteTournament;
@@ -54,22 +58,22 @@ module.exports = app => {
             }).catch(ErrorHandlerSrvc.error);
         }
 
-        function addParticipant (selection) {
+        function addParticipant () {
             vm.isLoading = true;
             vm.addingPart = false;
 
-            TournamentSrvc.addParticipant(vm.id, selection.part._id).then(() => {
+            TournamentSrvc.addParticipant(vm.id, vm.input.part._id).then(() => {
                 load();
-                addSetting(selection);
+                addSetting();
             }).catch(ErrorHandlerSrvc.error);
         }
 
-        function addSetting (selection) {
+        function addSetting () {
             const setting = {
-                participantId: selection.part._id,
+                participantId: vm.input.part._id,
                 tournamentId: vm.id,
                 settingName: 'useAlias',
-                setting: selection.useAlias || false,
+                setting: vm.input.useAlias || false,
             };
 
             ParticipantSrvc.addSetting(setting).catch(ErrorHandlerSrvc.error);
