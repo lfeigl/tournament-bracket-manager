@@ -26,7 +26,6 @@ module.exports = app => {
         vm.addParticipant = addParticipant;
         vm.deleteTournament = deleteTournament;
         vm.deleteParticipant = deleteParticipant;
-        vm.confirm = confirm;
         vm.tourMdlSubmit = editTournament;
         vm.openTourMdl = openTourMdl;
         vm.cancelTourMdl = cancelTourMdl;
@@ -91,11 +90,6 @@ module.exports = app => {
                 load();
                 vm.delPartMdl = false;
             }).catch(ErrorHandlerSrvc.error);
-        }
-
-        function confirm (participantId) {
-            vm.participantId = participantId;
-            vm.delPartMdl = true;
         }
 
         function editTournament (edit) {
