@@ -12,7 +12,6 @@ module.exports = app => {
 
         vm.add = add;
         vm.edit = edit;
-        vm.confirm = confirm;
         vm.remove = remove;
 
         loadAll();
@@ -35,11 +34,6 @@ module.exports = app => {
                 vm.editPart = null;
                 loadAll();
             }).catch(ErrorHandlerSrvc.error);
-        }
-
-        function confirm (id) {
-            vm.id = id;
-            vm.activeModal = true;
         }
 
         function remove () {
