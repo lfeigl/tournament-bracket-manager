@@ -28,7 +28,7 @@
                                 </td>
                                 <td>
                                     <div class="is-pulled-right">
-                                        <button class="button" title="Edit this participant" data-ng-click="pp.editPart = participant._id;" data-ng-hide="pp.editPart === participant._id">
+                                        <button class="button" title="Edit this participant" data-ng-click="pp.editPart = participant._id; pp.input.edit.name = participant.name;" data-ng-hide="pp.editPart === participant._id">
                                             <span class="icon">
                                                 <i class="fas fa-pencil-alt"></i>
                                             </span>
