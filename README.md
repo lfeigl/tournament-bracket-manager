@@ -19,11 +19,14 @@ You can configure TBM in the *tbm.config.js*:
   * `name` **(string)**: The name of the database TBM should use. *(default: `'tbm-db'`)*
 
 Example:
+
 ```JavaScript
 /* add your settings below this */
 config.port = 8080;
 config.database.name = 'My tournament database';
 ```
+
+The server cannot start without this file. If you (accidentally) deleted it you can generate a new one by running `npm run generate-config`. Nevertheless your settings will be lost.
 
 
 ## Starting the server
