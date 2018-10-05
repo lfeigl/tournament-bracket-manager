@@ -9,7 +9,7 @@ A simple manager for tournament brackets.
 
 
 ## Configuration
-You can configure TBM in the *tbm.config.js*:
+You can configure TBM in the *tbm.config.js* if you need:
 
 `config.`
 * `port` **(number)**: The port on which TBM will be running. *(default: `1337`)*
