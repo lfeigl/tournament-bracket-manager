@@ -19,13 +19,13 @@
         <div class="tabs is-centered">
             <ul>
                 <li data-ng-class="{ 'is-active': isActiveHash('info') }">
-                    <a href="/tournaments/{{details.id}}#info">Info</a>
+                    <a data-ng-href="/tournaments/{{details.id}}#info">Info</a>
                 </li>
                 <li data-ng-class="{ 'is-active': isActiveHash('participants') }">
-                    <a href="/tournaments/{{details.id}}#participants">Participants</a>
+                    <a data-ng-href="/tournaments/{{details.id}}#participants">Participants</a>
                 </li>
                 <li data-ng-class="{ 'is-active': isActiveHash('bracket') }">
-                    <a href="/tournaments/{{details.id}}#bracket">Bracket</a>
+                    <a data-ng-href="/tournaments/{{details.id}}#bracket">Bracket</a>
                 </li>
             </ul>
         </div>

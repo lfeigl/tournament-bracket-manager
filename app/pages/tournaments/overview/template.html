@@ -28,7 +28,7 @@
             <tbody>
                 <tr data-ng-repeat="tournament in tour.all | orderBy: 'title'">
                     <td>
-                        <a href="/tournaments/{{tournament._id}}#info">{{tournament.title}}</a>
+                        <a data-ng-href="/tournaments/{{tournament._id}}#info">{{tournament.title}}</a>
                     </td>
                     <td>{{tournament.date.from | date: "EEEE, dd.MM.yyyy"}} - {{tournament.date.to | date: "EEEE, dd.MM.yyyy"}}</td>
                     <td>{{tournament.time.from | date: "HH:mm"}} - {{tournament.time.to | date: "HH:mm"}}</td>
