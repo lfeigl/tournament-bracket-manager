@@ -48,7 +48,7 @@ module.exports = {
     getDetails: (req, res, next) => {
         const collection = db.get('participants');
         const participantIds = req.body;
-        const objectIds = participantIds.map(participantId => {
+        const objectIds = participantIds.map((participantId) => {
             return new ObjectId(participantId);
         });
         const selector = { _id: { $in: objectIds } };
