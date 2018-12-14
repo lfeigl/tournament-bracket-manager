@@ -12,7 +12,7 @@ const template = [
     '',
 ];
 
-fs.access(configPath, err => {
+fs.access(configPath, (err) => {
     if (err) {
         if (err.code === 'ENOENT') {
             generateConfig();
@@ -25,7 +25,7 @@ fs.access(configPath, err => {
 });
 
 function generateConfig () {
-    fs.writeFile(configPath, template.join('\n'), err => {
+    fs.writeFile(configPath, template.join('\n'), (err) => {
         if (err) throw err;
 
         console.log('Generated config file.');

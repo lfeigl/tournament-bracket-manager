@@ -5,7 +5,7 @@ const opts = { useNewUrlParser: true };
 let db = null;
 
 module.exports = {
-    connect: done => {
+    connect: (done) => {
         if (db) return done(null, dbConfig);
 
         MongoClient.connect(`mongodb://${dbConfig.server}:${dbConfig.port}`, opts, (err, client) => {
@@ -15,7 +15,7 @@ module.exports = {
             done(null, dbConfig);
         });
     },
-    get: collection => {
+    get: (collection) => {
         return db.collection(collection);
     },
 };
