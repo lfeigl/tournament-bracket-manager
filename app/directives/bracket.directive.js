@@ -1,7 +1,7 @@
 const _ = require('lodash');
 const $ = require('jquery');
 
-module.exports = app => {
+module.exports = (app) => {
     app.directive('bracket', () => {
         return {
             link: (scope, element, attrs) => {
