@@ -1,6 +1,6 @@
 const _ = require('lodash');
 
-module.exports = app => {
+module.exports = (app) => {
     app.controller('ErrorHandlerCtrl', function ($rootScope, $location, ErrorHandlerSrvc) {
         const vm = this;
         vm.formatted = null;

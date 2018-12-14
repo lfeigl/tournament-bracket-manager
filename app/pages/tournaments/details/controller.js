@@ -1,6 +1,6 @@
 const _ = require('lodash');
 
-module.exports = app => {
+module.exports = (app) => {
     app.controller('DetailsCtrl', function ($rootScope, $routeParams, $location, TournamentSrvc, ParticipantSrvc, ErrorHandlerSrvc) {
         const vm = this;
         let tourBackup = null;
@@ -35,17 +35,17 @@ module.exports = app => {
         function load () {
             vm.isLoading = true;
 
-            TournamentSrvc.getOne(vm.id).then(res => {
+            TournamentSrvc.getOne(vm.id).then((res) => {
                 vm.tournament = res.data;
                 $rootScope.pageTitle = vm.tournament.title;
                 formatDates();
 
-                ParticipantSrvc.getAll().then(res => {
+                ParticipantSrvc.getAll().then((res) => {
                     vm.allParticipants = res.data;
 
                     if (!_.isEmpty(vm.tournament.participants)) {
-                        ParticipantSrvc.getDetails(vm.tournament.participants).then(res => {
-                            vm.participants = res.data.map(participant => {
+                        ParticipantSrvc.getDetails(vm.tournament.participants).then((res) => {
+                            vm.participants = res.data.map((participant) => {
                                 participant.tourSettings = participant.settings[vm.id];
                                 return participant;
                             });
@@ -113,8 +113,8 @@ module.exports = app => {
             const firstLevel = [ 'date', 'time' ];
             const secondLevel = [ 'from', 'to' ];
 
-            firstLevel.map(firstLevelItem => {
-                secondLevel.map(secondLevelItem => {
+            firstLevel.map((firstLevelItem) => {
+                secondLevel.map((secondLevelItem) => {
                     if (!_.isNil(vm.tournament[firstLevelItem]) && !_.isNil(vm.tournament[firstLevelItem][secondLevelItem])) {
                         vm.tournament[firstLevelItem][secondLevelItem] = new Date(vm.tournament[firstLevelItem][secondLevelItem]);
                     }
