@@ -2,7 +2,7 @@
 
 const path = require('path');
 const fs = require('fs');
-const configPath = path.join(__dirname, '..', 'tbm.config.js');
+const configPath = path.resolve('tbm.config.js');
 const template = [
     'const config = require(\'./tbm.config.defaults.js\');',
     'module.exports = config;',
