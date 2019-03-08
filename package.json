@@ -15,14 +15,14 @@
     "type": "git",
     "url": "git+https://github.com/matze-kalle/tournament-bracket-manager.git"
   },
-  "author": "Matze Kalle",
+  "author": "Luca Feigl",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/matze-kalle/tournament-bracket-manager/issues"
   },
   "homepage": "https://github.com/matze-kalle/tournament-bracket-manager#readme",
   "dependencies": {
-    "@fortawesome/fontawesome-free": "^5.7.1",
+    "@fortawesome/fontawesome-free": "^5.7.2",
     "angular": "^1.7.7",
     "angular-route": "^1.7.7",
     "body-parser": "^1.18.3",
@@ -39,7 +39,7 @@
     "node-sass": "^4.11.0",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
-    "webpack": "^4.29.3",
+    "webpack": "^4.29.6",
     "webpack-cli": "^3.2.3"
   }
 }
