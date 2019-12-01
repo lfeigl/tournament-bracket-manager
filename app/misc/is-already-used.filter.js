@@ -1,11 +1,11 @@
 const _ = require('lodash');
 
-module.exports = app => {
+module.exports = (app) => {
     app.filter('isAlreadyUsed', () => {
         return (options, alreadyUsed) => {
             const filtered = [];
 
-            _.map(options, option => {
+            _.map(options, (option) => {
                 const selector = {
                     _id: option._id,
                 };

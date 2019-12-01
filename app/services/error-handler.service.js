@@ -1,4 +1,4 @@
-module.exports = app => {
+module.exports = (app) => {
     app.service('ErrorHandlerSrvc', function ($location) {
         const srvc = this;
         srvc.err = null;

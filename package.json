@@ -4,8 +4,9 @@
   "description": "A simple manager for tournament brackets.",
   "main": "server/index.js",
   "scripts": {
-    "postinstall": "npm run build-client",
+    "postinstall": "npm run generate-config && npm run build-client",
     "start": "node server/index.js",
+    "generate-config": "node scripts/generate-config.js",
     "build-client": "webpack",
     "watch-client": "webpack -w",
     "watch-server": "supervisor -w server -s -pid pid.log -n error server/index.js"
@@ -14,7 +15,7 @@
     "type": "git",
     "url": "git+https://github.com/matze-kalle/tournament-bracket-manager.git"
   },
-  "author": "Matze Kalle",
+  "author": "Luca Feigl",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/matze-kalle/tournament-bracket-manager/issues"

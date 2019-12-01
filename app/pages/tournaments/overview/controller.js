@@ -1,4 +1,4 @@
-module.exports = app => {
+module.exports = (app) => {
     app.controller('TournamentCtrl', function (TournamentSrvc, ErrorHandlerSrvc) {
         const vm = this;
         vm.all = null;
@@ -16,7 +16,7 @@ module.exports = app => {
         loadAll();
 
         function loadAll () {
-            TournamentSrvc.getAll().then(res => {
+            TournamentSrvc.getAll().then((res) => {
                 vm.all = res.data;
             }).catch(ErrorHandlerSrvc.error);
         }

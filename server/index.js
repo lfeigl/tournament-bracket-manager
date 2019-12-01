@@ -7,7 +7,7 @@ const api = require('./api');
 const db = require('./database.js');
 
 const server = express();
-const publicDir = path.join(__dirname, '..', 'public');
+const publicDir = path.resolve('public');
 const port = config.port;
 
 server.use(express.static(publicDir));

@@ -1,4 +1,4 @@
-module.exports = app => {
+module.exports = (app) => {
     require('./dashboard')(app);
     require('./tournaments')(app);
     require('./participants')(app);
