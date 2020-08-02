@@ -30,7 +30,7 @@
     "express": "^4.17.1",
     "jquery": "^3.4.1",
     "jquery-bracket": "^0.11.1",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "mongodb": "^3.3.5"
   },
   "devDependencies": {
