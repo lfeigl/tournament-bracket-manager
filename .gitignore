@@ -1,4 +1,11 @@
+# IDEs
+.idea
+.vscode
+
+# Directories
 node_modules
+public/js
+
+# Files
 tbm.config.js
 pid.log
-public/js
