@@ -22,24 +22,24 @@
   },
   "homepage": "https://github.com/matze-kalle/tournament-bracket-manager#readme",
   "dependencies": {
-    "@fortawesome/fontawesome-free": "^5.11.2",
+    "@fortawesome/fontawesome-free": "^5.14.0",
     "angular": "^1.8.0",
-    "angular-route": "^1.7.9",
+    "angular-route": "^1.8.0",
     "body-parser": "^1.19.0",
-    "bulma": "^0.8.0",
+    "bulma": "^0.8.2",
     "express": "^4.17.1",
-    "jquery": "^3.5.0",
+    "jquery": "^3.5.1",
     "jquery-bracket": "^0.11.1",
     "lodash": "^4.17.19",
-    "mongodb": "^3.3.5"
+    "mongodb": "^3.6.0"
   },
   "devDependencies": {
-    "css-loader": "^3.2.0",
+    "css-loader": "^3.6.0",
     "html-loader": "^0.5.5",
-    "node-sass": "^4.13.0",
-    "sass-loader": "^8.0.0",
-    "style-loader": "^1.0.1",
-    "webpack": "^4.41.2",
-    "webpack-cli": "^3.3.10"
+    "node-sass": "^4.14.1",
+    "sass-loader": "^8.0.2",
+    "style-loader": "^1.2.1",
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12"
   }
 }
