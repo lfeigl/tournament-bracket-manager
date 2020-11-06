@@ -11,16 +11,8 @@
     "watch-client": "webpack -w",
     "watch-server": "supervisor -w server -s -pid pid.log -n error server/index.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/matze-kalle/tournament-bracket-manager.git"
-  },
   "author": "Luca Feigl",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/matze-kalle/tournament-bracket-manager/issues"
-  },
-  "homepage": "https://github.com/matze-kalle/tournament-bracket-manager#readme",
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.14.0",
     "angular": "^1.8.0",
